@@ -1,0 +1,22 @@
+PODS:
+  - Nimble (3.2.0)
+  - Quick (0.9.2)
+  - Szimpla (0.1.0)
+
+DEPENDENCIES:
+  - Nimble (~> 3.0)
+  - Quick (~> 0.8)
+  - Szimpla (from `../`)
+
+EXTERNAL SOURCES:
+  Szimpla:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
+  Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
+  Szimpla: 1ee486d6a562a55e257510e9b053958f8148cdb0
+
+PODFILE CHECKSUM: e6f71fac98cbe0df6b6f58b86452db4c6d514f3d
+
+COCOAPODS: 1.0.0
