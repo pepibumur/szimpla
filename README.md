@@ -20,6 +20,9 @@ it, simply add the following line to your Podfile:
 pod "Szimpla"
 ```
 
+## References
+- ios-snapshot-testing: [Link](https://github.com/facebook/ios-snapshot-test-case)
+
 ## Author
 
 Pedro Piñera Buendía, pepibumur@gmail.com
