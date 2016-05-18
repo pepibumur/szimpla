@@ -24,6 +24,7 @@ pod "Szimpla"
 
 ## References
 - ios-snapshot-testing: [Link](https://github.com/facebook/ios-snapshot-test-case)
+- UI Testing in Xcode: [Link](https://developer.apple.com/videos/play/wwdc2015/406/)
 
 ## Author
 
