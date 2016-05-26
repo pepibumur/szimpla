@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		237F26C31CF73549005192FD /* SpanshotFetcherSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F26C21CF73549005192FD /* SpanshotFetcherSpec.swift */; };
+		237F26D71CF74928005192FD /* ResultSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F26D61CF74928005192FD /* ResultSpec.swift */; };
 		E226BFE2D39A094A413A2CD1 /* Pods_Szimpla_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B147945EFF466A44B7FDC7 /* Pods_Szimpla_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0852BBBAB129C23884212543 /* Pods-Szimpla_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Szimpla_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Szimpla_Tests/Pods-Szimpla_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		237F26C21CF73549005192FD /* SpanshotFetcherSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpanshotFetcherSpec.swift; sourceTree = "<group>"; };
+		237F26D61CF74928005192FD /* ResultSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSpec.swift; sourceTree = "<group>"; };
 		3A1A639891F9CE36431488FB /* Pods-Szimpla_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Szimpla_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Szimpla_Tests/Pods-Szimpla_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Szimpla_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Szimpla_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		72B147945EFF466A44B7FDC7 /* Pods_Szimpla_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Szimpla_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		994421DA8971DC5413BC38FA /* Szimpla.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Szimpla.podspec; path = ../Szimpla.podspec; sourceTree = "<group>"; };
 		E101AB420F471CC560A3DB96 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -44,6 +46,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		237F26C11CF73508005192FD /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				237F26C21CF73549005192FD /* SpanshotFetcherSpec.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		237F26D51CF7491E005192FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				237F26D61CF74928005192FD /* ResultSpec.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -66,7 +84,8 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				237F26D51CF7491E005192FD /* Models */,
+				237F26C11CF73508005192FD /* Repositories */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -218,7 +237,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				237F26C31CF73549005192FD /* SpanshotFetcherSpec.swift in Sources */,
+				237F26D71CF74928005192FD /* ResultSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
