@@ -1,36 +1,25 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites tests='17' failures='3'>
+<testsuites tests='14' failures='0'>
   <testsuite name='Szimpla_Tests.DataToSnapshotAdapterSpec' tests='6' failures='0'>
-    <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_parameters_are_missing__should_return_the_correct_error' time='0.010'/>
+    <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_parameters_are_missing__should_return_the_correct_error' time='0.005'/>
     <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_headers_are_missing__should_return_the_correct_error' time='0.001'/>
     <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_body_is_missing__should_return_the_correct_error' time='0.001'/>
-    <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_data_is_correct__should_have_the_correct_parameters' time='0.003'/>
+    <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_data_is_correct__should_have_the_correct_parameters' time='0.038'/>
     <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_data_is_correct__should_have_the_correct_headers' time='0.001'/>
     <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_data_is_correct__should_have_the_correct_body' time='0.001'/>
   </testsuite>
-  <testsuite name='Szimpla_Tests.RequestToSnapshotAdapterSpec' tests='4' failures='1'>
-    <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___should_have_the_correct_headers' time='0.003'/>
+  <testsuite name='Szimpla_Tests.RequestToSnapshotAdapterSpec' tests='3' failures='0'>
+    <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___should_have_the_correct_headers' time='0.001'/>
     <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___should_have_the_correct_body' time='0.001'/>
-    <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___should_have_the_correct_parameters'>
-      <failure message='expected to equal &lt;[&quot;param1&quot;: &quot;value1&quot;]&gt;, got &lt;[:]&gt;'>Example/Tests/Adapters/RequestToSnapshotAdapterSpec.swift:48</failure>
-    </testcase>
-    <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___when_there_s_no_url__it_should_return_an_EmptyURL_error' time='0.001'/>
+    <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___when_there_s_no_url__it_should_return_an_EmptyURL_error' time='0.017'/>
   </testsuite>
   <testsuite name='Szimpla_Tests.ResultSpec' tests='4' failures='0'>
     <testcase classname='Szimpla_Tests.ResultSpec' name='error__when_it_s_an__Error__should_return_an_the_error' time='0.001'/>
-    <testcase classname='Szimpla_Tests.ResultSpec' name='error__when_it_s_a__Success__should_return_nil' time='0.009'/>
+    <testcase classname='Szimpla_Tests.ResultSpec' name='error__when_it_s_a__Success__should_return_nil' time='0.001'/>
     <testcase classname='Szimpla_Tests.ResultSpec' name='value__when_it_s_an__Error__should_return_nil' time='0.001'/>
-    <testcase classname='Szimpla_Tests.ResultSpec' name='value__when_it_s_a__Success__should_return_the_value' time='0.001'/>
-  </testsuite>
-  <testsuite name='Szimpla_Tests.SnapshotFetcherSpec' tests='2' failures='2'>
-    <testcase classname='Szimpla_Tests.SnapshotFetcherSpec' name='_fetch__when_the_snapshot_exists__should_return_the_correct_snapshot'>
-      <failure message='expected to equal &lt;Snapshot(parameters: [&quot;param&quot;: &quot;value&quot;], headers: [&quot;header&quot;: &quot;value&quot;], body: [&quot;body&quot;: value])&gt;, got &lt;nil&gt; (use beNil() to match nils)'>Example/Tests/Fetchers/SnapshotFetcherSpec.swift:25</failure>
-    </testcase>
-    <testcase classname='Szimpla_Tests.SnapshotFetcherSpec' name='_fetch__when_the_snapshot_doesn_t_exist__should_return_a_not_found_error'>
-      <failure message='expected to equal &lt;NotFound&gt;, got &lt;DirNotDefined&gt;'>Example/Tests/Fetchers/SnapshotFetcherSpec.swift:36</failure>
-    </testcase>
+    <testcase classname='Szimpla_Tests.ResultSpec' name='value__when_it_s_a__Success__should_return_the_value' time='0.003'/>
   </testsuite>
   <testsuite name='Szimpla_Tests.SnapshotSpec' tests='1' failures='0'>
-    <testcase classname='Szimpla_Tests.SnapshotSpec' name='____should_return_true_if_both_snapshots_are_the_same' time='0.002'/>
+    <testcase classname='Szimpla_Tests.SnapshotSpec' name='____should_return_true_if_both_snapshots_are_the_same' time='0.001'/>
   </testsuite>
 </testsuites>
