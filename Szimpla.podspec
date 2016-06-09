@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Szimpla"
-  s.version          = "0.1.0"
+  s.version          = "0.0.1"
   s.summary          = "Networking Testing library for Swift"
   s.description      = <<-DESC
  Networking testing library that records requests and match them later with future tests executions.
