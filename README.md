@@ -1,6 +1,6 @@
 # Szimpla
 
-[![CI Status](http://img.shields.io/travis/Pedro Piñera Buendía/Szimpla.svg?style=flat)](https://travis-ci.org/Pedro Piñera Buendía/Szimpla)
+[![CI Status](http://img.shields.io/travis/pepibumur/Szimpla.svg?style=flat)](https://travis-ci.org/Pedro Piñera Buendía/Szimpla)
 [![Version](https://img.shields.io/cocoapods/v/Szimpla.svg?style=flat)](http://cocoapods.org/pods/Szimpla)
 [![License](https://img.shields.io/cocoapods/l/Szimpla.svg?style=flat)](http://cocoapods.org/pods/Szimpla)
 [![Platform](https://img.shields.io/cocoapods/p/Szimpla.svg?style=flat)](http://cocoapods.org/pods/Szimpla)
