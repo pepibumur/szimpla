@@ -10,11 +10,12 @@ PODSPEC = "Szimpla.podspec"
 WORKSPACE = "Example/Szimpla.xcworkspace"
 SCHEME_TESTS = "Szimpla-Example"
 REPOSITORY = "pepibumur/Szimpla"
+PODFILE = "Example/Podfile"
 
 # Lanes
 desc "Setup everything needed to work on the project"
 lane :setup do
-  cocoapods
+  cocoapods(podfile: PODFILE)
 end
 
 desc "Runs the tests suite"

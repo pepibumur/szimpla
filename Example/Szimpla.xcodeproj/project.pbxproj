@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		237F26C31CF73549005192FD /* SpanshotFetcherSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F26C21CF73549005192FD /* SpanshotFetcherSpec.swift */; };
+		23753AC51D03DCA2004C4822 /* RequestToSnapshotAdapterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23753AC41D03DCA2004C4822 /* RequestToSnapshotAdapterSpec.swift */; };
+		23753AC71D03E2B8004C4822 /* DataToSnapshotAdapterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23753AC61D03E2B8004C4822 /* DataToSnapshotAdapterSpec.swift */; };
+		23753ACA1D03E585004C4822 /* SnapshotFetcherSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23753AC91D03E585004C4822 /* SnapshotFetcherSpec.swift */; };
+		23753ADF1D03E924004C4822 /* test_snapshot in Resources */ = {isa = PBXBuildFile; fileRef = 23753ADE1D03E924004C4822 /* test_snapshot */; };
+		23753AE11D03EB89004C4822 /* SnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23753AE01D03EB89004C4822 /* SnapshotSpec.swift */; };
+		23753AE71D03EC68004C4822 /* FileManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23753AE61D03EC68004C4822 /* FileManagerSpec.swift */; };
 		237F26D71CF74928005192FD /* ResultSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F26D61CF74928005192FD /* ResultSpec.swift */; };
 		E226BFE2D39A094A413A2CD1 /* Pods_Szimpla_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B147945EFF466A44B7FDC7 /* Pods_Szimpla_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0852BBBAB129C23884212543 /* Pods-Szimpla_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Szimpla_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Szimpla_Tests/Pods-Szimpla_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		237F26C21CF73549005192FD /* SpanshotFetcherSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpanshotFetcherSpec.swift; sourceTree = "<group>"; };
+		23753AC41D03DCA2004C4822 /* RequestToSnapshotAdapterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestToSnapshotAdapterSpec.swift; sourceTree = "<group>"; };
+		23753AC61D03E2B8004C4822 /* DataToSnapshotAdapterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataToSnapshotAdapterSpec.swift; sourceTree = "<group>"; };
+		23753AC91D03E585004C4822 /* SnapshotFetcherSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotFetcherSpec.swift; sourceTree = "<group>"; };
+		23753ADE1D03E924004C4822 /* test_snapshot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_snapshot; sourceTree = "<group>"; };
+		23753AE01D03EB89004C4822 /* SnapshotSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotSpec.swift; sourceTree = "<group>"; };
+		23753AE61D03EC68004C4822 /* FileManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerSpec.swift; sourceTree = "<group>"; };
 		237F26D61CF74928005192FD /* ResultSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSpec.swift; sourceTree = "<group>"; };
 		3A1A639891F9CE36431488FB /* Pods-Szimpla_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Szimpla_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Szimpla_Tests/Pods-Szimpla_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Szimpla_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Szimpla_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,18 +56,44 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		237F26C11CF73508005192FD /* Repositories */ = {
+		23753AC31D03DC91004C4822 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
-				237F26C21CF73549005192FD /* SpanshotFetcherSpec.swift */,
+				23753AC41D03DCA2004C4822 /* RequestToSnapshotAdapterSpec.swift */,
+				23753AC61D03E2B8004C4822 /* DataToSnapshotAdapterSpec.swift */,
 			);
-			path = Repositories;
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		23753AC81D03E57E004C4822 /* Fetchers */ = {
+			isa = PBXGroup;
+			children = (
+				23753AC91D03E585004C4822 /* SnapshotFetcherSpec.swift */,
+			);
+			path = Fetchers;
+			sourceTree = "<group>";
+		};
+		23753ADD1D03E924004C4822 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				23753ADE1D03E924004C4822 /* test_snapshot */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		23753AE51D03EC61004C4822 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				23753AE61D03EC68004C4822 /* FileManagerSpec.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		237F26D51CF7491E005192FD /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				237F26D61CF74928005192FD /* ResultSpec.swift */,
+				23753AE01D03EB89004C4822 /* SnapshotSpec.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -84,8 +120,11 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				23753AE51D03EC61004C4822 /* Utils */,
+				23753ADD1D03E924004C4822 /* Fixtures */,
+				23753AC81D03E57E004C4822 /* Fetchers */,
+				23753AC31D03DC91004C4822 /* Adapters */,
 				237F26D51CF7491E005192FD /* Models */,
-				237F26C11CF73508005192FD /* Repositories */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -179,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23753ADF1D03E924004C4822 /* test_snapshot in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,8 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				237F26C31CF73549005192FD /* SpanshotFetcherSpec.swift in Sources */,
+				23753ACA1D03E585004C4822 /* SnapshotFetcherSpec.swift in Sources */,
 				237F26D71CF74928005192FD /* ResultSpec.swift in Sources */,
+				23753AC51D03DCA2004C4822 /* RequestToSnapshotAdapterSpec.swift in Sources */,
+				23753AC71D03E2B8004C4822 /* DataToSnapshotAdapterSpec.swift in Sources */,
+				23753AE71D03EC68004C4822 /* FileManagerSpec.swift in Sources */,
+				23753AE11D03EB89004C4822 /* SnapshotSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

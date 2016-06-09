@@ -1,6 +1,6 @@
 language: objective-c
 before_install:
-  - bundle install
-  - bundle exec pod install --project-directory=Example
+- bundle install
 script:
-- bundle exec fastlane tests
+- bundle exec fastlane ci
+- bundle exec pod lib lint

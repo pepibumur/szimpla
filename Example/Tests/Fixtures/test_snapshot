@@ -1,0 +1,11 @@
+{
+  "parameters": {
+    "param": "value"
+  },
+  "headers": {
+    "header": "value"
+  },
+  "body": {
+    "body": "value"
+  }
+}
