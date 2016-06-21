@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <testsuites tests='14' failures='0'>
   <testsuite name='Szimpla_Tests.DataToSnapshotAdapterSpec' tests='6' failures='0'>
-    <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_parameters_are_missing__should_return_the_correct_error' time='0.005'/>
+    <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_parameters_are_missing__should_return_the_correct_error' time='0.127'/>
     <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_headers_are_missing__should_return_the_correct_error' time='0.001'/>
     <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_body_is_missing__should_return_the_correct_error' time='0.001'/>
-    <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_data_is_correct__should_have_the_correct_parameters' time='0.038'/>
+    <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_data_is_correct__should_have_the_correct_parameters' time='0.001'/>
     <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_data_is_correct__should_have_the_correct_headers' time='0.001'/>
     <testcase classname='Szimpla_Tests.DataToSnapshotAdapterSpec' name='_adapt___when_the_data_is_correct__should_have_the_correct_body' time='0.001'/>
   </testsuite>
   <testsuite name='Szimpla_Tests.RequestToSnapshotAdapterSpec' tests='3' failures='0'>
-    <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___should_have_the_correct_headers' time='0.001'/>
+    <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___should_have_the_correct_headers' time='0.002'/>
     <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___should_have_the_correct_body' time='0.001'/>
-    <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___when_there_s_no_url__it_should_return_an_EmptyURL_error' time='0.017'/>
+    <testcase classname='Szimpla_Tests.RequestToSnapshotAdapterSpec' name='_adapt___when_there_s_no_url__it_should_return_an_EmptyURL_error' time='0.001'/>
   </testsuite>
   <testsuite name='Szimpla_Tests.ResultSpec' tests='4' failures='0'>
-    <testcase classname='Szimpla_Tests.ResultSpec' name='error__when_it_s_an__Error__should_return_an_the_error' time='0.001'/>
+    <testcase classname='Szimpla_Tests.ResultSpec' name='error__when_it_s_an__Error__should_return_an_the_error' time='0.002'/>
     <testcase classname='Szimpla_Tests.ResultSpec' name='error__when_it_s_a__Success__should_return_nil' time='0.001'/>
     <testcase classname='Szimpla_Tests.ResultSpec' name='value__when_it_s_an__Error__should_return_nil' time='0.001'/>
-    <testcase classname='Szimpla_Tests.ResultSpec' name='value__when_it_s_a__Success__should_return_the_value' time='0.003'/>
+    <testcase classname='Szimpla_Tests.ResultSpec' name='value__when_it_s_a__Success__should_return_the_value' time='0.001'/>
   </testsuite>
   <testsuite name='Szimpla_Tests.SnapshotSpec' tests='1' failures='0'>
     <testcase classname='Szimpla_Tests.SnapshotSpec' name='____should_return_true_if_both_snapshots_are_the_same' time='0.001'/>

@@ -1,11 +1,11 @@
 PODS:
   - Nimble (3.2.0)
+  - NSURL+QueryDictionary (1.1.0)
   - Quick (0.9.2)
   - SwiftyJSON (2.3.2)
   - Szimpla (0.0.1):
+    - NSURL+QueryDictionary
     - SwiftyJSON
-    - VCRURLConnection
-  - VCRURLConnection (0.2.0)
 
 DEPENDENCIES:
   - Nimble (~> 3.0)
@@ -18,11 +18,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
+  NSURL+QueryDictionary: dd0a5fec689a9b4780b6fa0e0225c01ca3ea653e
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  Szimpla: bc6f91a38e921709c8f7096b6cc6c54c1c34a106
-  VCRURLConnection: accd771ebd4be11183a3e4d5a4403f180a9a235e
+  Szimpla: 74d673b89ee47d3fcbde466cce992497f382f711
 
-PODFILE CHECKSUM: e6f71fac98cbe0df6b6f58b86452db4c6d514f3d
+PODFILE CHECKSUM: c7fb1e3db986d969511722c82c3bf7864933be48
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1

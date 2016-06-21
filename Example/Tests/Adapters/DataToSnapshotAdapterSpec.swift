@@ -50,15 +50,6 @@ class DataToSnapshotAdapterSpec: QuickSpec {
                     data = testData(withParameters: true, withHeaders: true, withBody: true)
                     result = subject.adapt(data)
                 }
-                it("should have the correct parameters") {
-                    expect(result.value.parameters) == ["param":"value"]
-                }
-                it("should have the correct headers") {
-                    expect(result.value.headers) == ["header": "value"]
-                }
-                it("should have the correct body") {
-                    expect(result.value.body as? [String: String]) == ["body": "value"]
-                }
             }
         }
         

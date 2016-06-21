@@ -92,6 +92,13 @@
             ReferencedContainer = "container:Szimpla.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "SZ_REFERENCE_DIR"
+            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/NetworkSnapshots"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

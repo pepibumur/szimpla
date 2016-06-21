@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/pepibumur'
   s.ios.deployment_target = '8.0'
   s.source_files = 'Szimpla/Classes/**/*'
-  s.dependency 'VCRURLConnection'
   s.dependency 'SwiftyJSON'
+  s.dependency 'NSURL+QueryDictionary'
   s.frameworks = 'XCTest'
   # s.resource_bundles = {
   #   'Szimpla' => ['Szimpla/Assets/*.png']
