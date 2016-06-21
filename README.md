@@ -39,7 +39,7 @@ import Szimpla
 // Navigate to the point where you would like to start testing.
 Szimpla.instance.start() // Starts recording
 // Do all your UI tests steps
-Szimpla.record.name(name: "user_share_tracking") // Saves the recorded requests
+Szimpla.instance.record.name(name: "user_share_tracking") // Saves the recorded requests
 ```
 Requests will be saved under `${SZ_REFERENCE_DIR}/user_share_tracking.json`
 
@@ -64,7 +64,7 @@ import Szimpla
 // Navigate to the point where you would like to start testing.
 Szimpla.instance.start() // Starts recording
 // Do all your UI tests steps
-Szimpla.record.validate(name: "user_share_tracking") // Saves the recorded requests
+Szimpla.instance.record.validate(name: "user_share_tracking") // Saves the recorded requests
 ```
 
 It the validation fails, it'll assert using `XCTAssert` printing the validation error. :tada:
