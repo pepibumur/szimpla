@@ -4,12 +4,12 @@ import SwiftyJSON
 /**
  *  Model that represents a test snapshot
  */
-internal struct Snapshot {
+public struct Snapshot {
     
     // MARK: - Attributes
     
     /// Requests
-    let requests: [Request]
+    public let requests: [Request]
 }
 
 
@@ -17,6 +17,6 @@ internal struct Snapshot {
 
 extension Snapshot: Equatable {}
 
-internal func == (lhs: Snapshot, rhs: Snapshot) -> Bool {
+public func == (lhs: Snapshot, rhs: Snapshot) -> Bool {
     return rhs.requests == lhs.requests
 }

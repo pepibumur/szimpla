@@ -12,7 +12,7 @@ class SzimplaSpec: QuickSpec {
         
         beforeEach {
             requestFetcher = MockRequestFetcher()
-            subject = Szimpla(requestsToSnapshotAdapter: RequestsToSnapshotAdapter(), snapshotValidator: SnapshotValidator(), requestFetcher: requestFetcher, snapshotFetcher: SnapshotFetcher.withName)
+            subject = Szimpla(requestsToSnapshotAdapter: RequestsToSnapshotAdapter(), snapshotValidator: DefaultValidator(), requestFetcher: requestFetcher, snapshotFetcher: SnapshotFetcher.withName)
         }
         
         afterEach {
@@ -28,9 +28,6 @@ class SzimplaSpec: QuickSpec {
         
         describe("-record:name:filter") {
             it("should tear down the request fetcher") {
-                waitUntil(action: { (done) in
-                    
-                })
                 try! subject.start()
                 subject.record(name: "test")
                 expect(requestFetcher.tearDownCalled).to(beTrue())

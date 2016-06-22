@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		238DB8001D1AC73300A9DE11 /* DefaultValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D128031D19D87500F90429 /* DefaultValidatorSpec.swift */; };
 		23D128071D19DB5A00F90429 /* URLRecordProtocolSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D128051D19D91800F90429 /* URLRecordProtocolSpec.swift */; };
 		23D128081D19F13600F90429 /* FileManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23753AE61D03EC68004C4822 /* FileManagerSpec.swift */; };
 		23D1280B1D19F59100F90429 /* SnapshotSaverSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1280A1D19F59100F90429 /* SnapshotSaverSpec.swift */; };
@@ -28,7 +29,7 @@
 		23753AE01D03EB89004C4822 /* SnapshotSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotSpec.swift; sourceTree = "<group>"; };
 		23753AE61D03EC68004C4822 /* FileManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerSpec.swift; sourceTree = "<group>"; };
 		237F26D61CF74928005192FD /* ResultSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSpec.swift; sourceTree = "<group>"; };
-		23D128031D19D87500F90429 /* SnapshotValidatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotValidatorSpec.swift; sourceTree = "<group>"; };
+		23D128031D19D87500F90429 /* DefaultValidatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultValidatorSpec.swift; sourceTree = "<group>"; };
 		23D128051D19D91800F90429 /* URLRecordProtocolSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRecordProtocolSpec.swift; sourceTree = "<group>"; };
 		23D1280A1D19F59100F90429 /* SnapshotSaverSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotSaverSpec.swift; sourceTree = "<group>"; };
 		23D1280E1D19FD6E00F90429 /* RequestSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSpec.swift; sourceTree = "<group>"; };
@@ -113,7 +114,7 @@
 		23D128021D19D86C00F90429 /* Validators */ = {
 			isa = PBXGroup;
 			children = (
-				23D128031D19D87500F90429 /* SnapshotValidatorSpec.swift */,
+				23D128031D19D87500F90429 /* DefaultValidatorSpec.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -325,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				238DB8001D1AC73300A9DE11 /* DefaultValidatorSpec.swift in Sources */,
 				23D1280F1D19FD6E00F90429 /* RequestSpec.swift in Sources */,
 				23D128081D19F13600F90429 /* FileManagerSpec.swift in Sources */,
 				23D1281E1D1A787400F90429 /* SzimplaExpectationSpec.swift in Sources */,

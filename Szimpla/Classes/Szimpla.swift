@@ -13,13 +13,13 @@ public class Szimpla {
     private let requestsToSnapshotAdapter: RequestsToSnapshotAdapter
     private let requestFetcher: RequestFetcher
     private let snapshotFetcher: (name: String) -> SnapshotFetcher
-    private let snapshotValidator: SnapshotValidator
+    private let snapshotValidator: Validator
     private let asserter: XCAsserter
     
     
     // MARK: - Init
     
-    internal init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter, snapshotValidator: SnapshotValidator, requestFetcher: RequestFetcher, snapshotFetcher: (String) -> SnapshotFetcher,
+    internal init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter, snapshotValidator: Validator, requestFetcher: RequestFetcher, snapshotFetcher: (String) -> SnapshotFetcher,
                   asserter: XCAsserter = XCAsserter()) {
         self.requestsToSnapshotAdapter = requestsToSnapshotAdapter
         self.snapshotValidator = snapshotValidator
@@ -29,7 +29,7 @@ public class Szimpla {
     }
     
     public convenience init() {
-        self.init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter(), snapshotValidator: SnapshotValidator(), requestFetcher: RequestFetcher(), snapshotFetcher: SnapshotFetcher.withName)
+        self.init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter(), snapshotValidator: DefaultValidator(), requestFetcher: RequestFetcher(), snapshotFetcher: SnapshotFetcher.withName)
     }
     
     
@@ -87,10 +87,11 @@ public class Szimpla {
             throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(name)~~ not found.")
             return
         }
-        let validationResult = self.snapshotValidator.validate(snapshotResult.value, localSnapshot: localSnapshotResult.value)
-        if validationResult.error != nil {
-            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(name)~~ validation failed:\n\(validationResult.error)")
-            return
+        do {
+            try self.snapshotValidator.validate(recordedSnapshot: snapshotResult.value, localSnapshot: localSnapshotResult.value)
+        }
+        catch {
+            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(name)~~ validation failed:\n\(error)")
         }
     }
     
