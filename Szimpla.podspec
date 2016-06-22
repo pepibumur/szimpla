@@ -11,17 +11,19 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/pepibumur/Szimpla.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/pepibumur'
   s.ios.deployment_target = '8.0'
-  s.source_files = 'Szimpla/Classes/**/*'
+
+  # Dependencies
   s.dependency 'SwiftyJSON'
   s.dependency 'NSURL+QueryDictionary'
   s.frameworks = 'XCTest'
 
+  # Files
+  s.source_files = 'Szimpla/Classes/**/*'
+  s.exclude_files = 'Szimpla/Classes/Expectations/**'
+
 
   s.subspec "Nimble" do |ss|
     ss.dependency 'Nimble'
+    ss.source_files = 'Szimpla/Classes/**/*', 'Szimpla/Classes/Expectations/**'
   end
-  # s.resource_bundles = {
-  #   'Szimpla' => ['Szimpla/Assets/*.png']
-  # }
-  # s.public_header_files = 'Pod/Classes/**/*.h'
 end

@@ -16,6 +16,7 @@
 		23D128101D19FF2700F90429 /* RequestFetcherSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F307181D129D5B00ED794D /* RequestFetcherSpec.swift */; };
 		23D128131D1A05AD00F90429 /* URLRequestFilterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D128121D1A05AD00F90429 /* URLRequestFilterSpec.swift */; };
 		23D128151D1A079900F90429 /* SzimplaSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D128141D1A079900F90429 /* SzimplaSpec.swift */; };
+		23D1281E1D1A787400F90429 /* SzimplaExpectationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1281D1D1A787400F90429 /* SzimplaExpectationSpec.swift */; };
 		E226BFE2D39A094A413A2CD1 /* Pods_Szimpla_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B147945EFF466A44B7FDC7 /* Pods_Szimpla_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		23D1280E1D19FD6E00F90429 /* RequestSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSpec.swift; sourceTree = "<group>"; };
 		23D128121D1A05AD00F90429 /* URLRequestFilterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestFilterSpec.swift; sourceTree = "<group>"; };
 		23D128141D1A079900F90429 /* SzimplaSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SzimplaSpec.swift; sourceTree = "<group>"; };
+		23D1281D1D1A787400F90429 /* SzimplaExpectationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SzimplaExpectationSpec.swift; sourceTree = "<group>"; };
 		23F307181D129D5B00ED794D /* RequestFetcherSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFetcherSpec.swift; sourceTree = "<group>"; };
 		3A1A639891F9CE36431488FB /* Pods-Szimpla_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Szimpla_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Szimpla_Tests/Pods-Szimpla_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Szimpla_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Szimpla_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,14 @@
 			path = Filters;
 			sourceTree = "<group>";
 		};
+		23D1281C1D1A786800F90429 /* Expectations */ = {
+			isa = PBXGroup;
+			children = (
+				23D1281D1D1A787400F90429 /* SzimplaExpectationSpec.swift */,
+			);
+			path = Expectations;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +164,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				23D1281C1D1A786800F90429 /* Expectations */,
 				23D128111D1A053000F90429 /* Filters */,
 				23D128091D19F58900F90429 /* Saver */,
 				23D128021D19D86C00F90429 /* Validators */,
@@ -316,6 +327,7 @@
 			files = (
 				23D1280F1D19FD6E00F90429 /* RequestSpec.swift in Sources */,
 				23D128081D19F13600F90429 /* FileManagerSpec.swift in Sources */,
+				23D1281E1D1A787400F90429 /* SzimplaExpectationSpec.swift in Sources */,
 				23D128131D1A05AD00F90429 /* URLRequestFilterSpec.swift in Sources */,
 				23D1280C1D19FCBF00F90429 /* ResultSpec.swift in Sources */,
 				23D128071D19DB5A00F90429 /* URLRecordProtocolSpec.swift in Sources */,

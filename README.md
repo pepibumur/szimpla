@@ -34,6 +34,7 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod "Szimpla"
+pod "Szimpla/Nimbe" # If you're interested in Nimble matchers
 ```
 
 ## How to use it

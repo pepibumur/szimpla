@@ -25,7 +25,33 @@ public func matchRequests(name name: String, szimpla: Szimpla = Szimpla.instance
             error = catchedError
         }
         if let error = error {
-            failureMessage.postfixMessage = "match \(name) Snapshot. Validation error: \(error)"
+            failureMessage.postfixMessage = "match \(name) snapshot. Validation error: \(error)"
+        }
+        return error != nil
+    }
+}
+
+/**
+ Nimble Matcher that records the sent requests during the execution of the closure.
+ 
+ - parameter name:    Name of the snapshot where the requests will be saved.
+ - parameter szimpla: Szimpla instance.
+ 
+ - returns: Mathcer function required by Nimble
+ */
+public func recordRequests(name name: String, filter: RequestFilter! = nil, szimpla: Szimpla = Szimpla.instance) -> MatcherFunc<Any> {
+    return MatcherFunc { actualExpression, failureMessage in
+        var error: ErrorType?
+        do {
+            try szimpla.start()
+            try actualExpression.evaluate()
+            blockThread(seconds: delaySeconds)
+            try szimpla.record(name: name, filter: filter)
+        } catch let catchedError {
+            error = catchedError
+        }
+        if let error = error {
+            failureMessage.postfixMessage = "recording \(name) snapshot. Recording error: \(error)"
         }
         return error != nil
     }
