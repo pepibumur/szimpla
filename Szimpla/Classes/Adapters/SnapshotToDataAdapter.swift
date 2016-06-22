@@ -1,6 +1,7 @@
 import Foundation
 import SwiftyJSON
 
+/// Adapts NSData into Snapshot
 internal class SnapshotToDataAdapter: Adapter<Snapshot, NSData, SnapshotToDataError> {
     
     // MARK: - Adapter
@@ -27,11 +28,4 @@ internal class SnapshotToDataAdapter: Adapter<Snapshot, NSData, SnapshotToDataEr
         return json
     }
     
-}
-
-
-// MARK: - SnapshotToDataError
-
-internal enum SnapshotToDataError: ErrorType {
-    case SerializationError(ErrorType)
 }

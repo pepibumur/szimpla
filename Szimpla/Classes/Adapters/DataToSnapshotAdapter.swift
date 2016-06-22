@@ -1,6 +1,7 @@
 import Foundation
 import SwiftyJSON
 
+/// Adapts NSData into Snapshot.
 internal class DataToSnapshotAdapter: Adapter<NSData, Snapshot, DataToSnapshotError> {
     
     // MARK: - Adapter
@@ -22,25 +23,4 @@ internal class DataToSnapshotAdapter: Adapter<NSData, Snapshot, DataToSnapshotEr
         return Request(body: body, url: url, parameters: parameters)
     }
     
-}
-
-
-// MARK: - DataToSnapshotError
-
-public enum DataToSnapshotError: ErrorType {
-    case WrongFormat(String)
-}
-
-extension DataToSnapshotError: Equatable {}
-
-public func ==(lhs: DataToSnapshotError, rhs: DataToSnapshotError) -> Bool {
-    switch lhs {
-    case .WrongFormat(let lhsWrongFormatMessage):
-        switch rhs {
-        case .WrongFormat(let rhsWrongFormatMessage): return lhsWrongFormatMessage == rhsWrongFormatMessage
-        default: return false
-        }
-    default:
-        false
-    }
 }

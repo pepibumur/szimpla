@@ -46,7 +46,7 @@ public func recordRequests(name name: String, filter: RequestFilter! = nil, szim
             try szimpla.start()
             try actualExpression.evaluate()
             blockThread(seconds: delaySeconds)
-            try szimpla.record(name: name, filter: filter)
+            try szimpla.record(path: name, filter: filter)
         } catch let catchedError {
             error = catchedError
         }

@@ -2,6 +2,7 @@ import Foundation
 import SwiftyJSON
 import NSURL_QueryDictionary
 
+/// Adapts [NSURLRequest] into Snapshot
 internal class RequestsToSnapshotAdapter: Adapter<[NSURLRequest], Snapshot, RequestsToSnapshotError> {
     
     // MARK: - Adapter
@@ -44,13 +45,3 @@ internal class RequestsToSnapshotAdapter: Adapter<[NSURLRequest], Snapshot, Requ
         return url.baseURL?.absoluteString ?? ""
     }
 }
-
-
-// MARK: - DataToSnapshotError
-
-internal enum RequestsToSnapshotError: ErrorType {
-    case EmptyURL
-}
-
-extension RequestsToSnapshotError: Equatable {}
-

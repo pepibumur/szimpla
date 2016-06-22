@@ -12,24 +12,30 @@ public class Szimpla {
     
     private let requestsToSnapshotAdapter: RequestsToSnapshotAdapter
     private let requestFetcher: RequestFetcher
-    private let snapshotFetcher: (name: String) -> SnapshotFetcher
+    private let snapshotFetcher: (path: String) -> SnapshotFetcher
     private let snapshotValidator: Validator
     private let asserter: XCAsserter
+    private let snapshotSaver: SnapshotSaver
     
     
     // MARK: - Init
     
-    internal init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter, snapshotValidator: Validator, requestFetcher: RequestFetcher, snapshotFetcher: (String) -> SnapshotFetcher,
-                  asserter: XCAsserter = XCAsserter()) {
+    internal init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter,
+                  snapshotValidator: Validator,
+                  requestFetcher: RequestFetcher,
+                  snapshotFetcher: (String) -> SnapshotFetcher,
+                  asserter: XCAsserter = XCAsserter(),
+                  snapshotSaver: SnapshotSaver = SnapshotSaver()) {
         self.requestsToSnapshotAdapter = requestsToSnapshotAdapter
         self.snapshotValidator = snapshotValidator
         self.requestFetcher = requestFetcher
         self.snapshotFetcher = snapshotFetcher
         self.asserter = asserter
+        self.snapshotSaver = snapshotSaver
     }
     
     public convenience init() {
-        self.init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter(), snapshotValidator: DefaultValidator(), requestFetcher: RequestFetcher(), snapshotFetcher: SnapshotFetcher.withName)
+        self.init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter(), snapshotValidator: DefaultValidator(), requestFetcher: RequestFetcher(), snapshotFetcher: SnapshotFetcher.withPath)
     }
     
     
@@ -47,11 +53,17 @@ public class Szimpla {
     /**
      Saves the recorded requests with the given name.
      
-     - parameter name:   Recorded requests name.
+     - parameter name:   Path where the recorded requests will be saved.
      - parameter filter: Filter used for selecting which requests should be recorded.
      */
-    public func record(name name: String!, filter: RequestFilter! = nil) {
+    public func record(path path: String, filter: RequestFilter! = nil) throws {
         let requests = self.requestFetcher.tearDown(filter: filter)
+        let snapshotResult = self.requestsToSnapshotAdapter.adapt(requests)
+        if snapshotResult.error != nil {
+            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(path)~~ failed fetching the requests.")
+            return
+        }
+        
     }
     
     /**
@@ -75,23 +87,23 @@ public class Szimpla {
     
     // MARK: - Internal
     
-    internal func _validate(name: String) throws {
-        let testRequests = self.requestFetcher.tearDown()
-        let snapshotResult = self.requestsToSnapshotAdapter.adapt(testRequests)
+    internal func _validate(path: String) throws {
+        let requests = self.requestFetcher.tearDown()
+        let snapshotResult = self.requestsToSnapshotAdapter.adapt(requests)
         if snapshotResult.error != nil {
-            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(name)~~ failed fetching the requests.")
+            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(path)~~ failed fetching the requests.")
             return
         }
-        let localSnapshotResult = self.snapshotFetcher(name: name).fetch()
+        let localSnapshotResult = self.snapshotFetcher(path: path).fetch()
         if localSnapshotResult.error != nil {
-            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(name)~~ not found.")
+            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(path)~~ not found.")
             return
         }
         do {
             try self.snapshotValidator.validate(recordedSnapshot: snapshotResult.value, localSnapshot: localSnapshotResult.value)
         }
         catch {
-            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(name)~~ validation failed:\n\(error)")
+            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(path)~~ validation failed:\n\(error)")
         }
     }
     

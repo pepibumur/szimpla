@@ -69,7 +69,12 @@ internal class FileManager {
      - throws: an exception if the data cannot be saved.
      */
     internal func save(data data: NSData, path: String) throws {
-        try data.writeToURL(self.basePath.URLByAppendingPathComponent(path), options: NSDataWritingOptions.AtomicWrite)
+        let destinationPath = self.basePath.URLByAppendingPathComponent(path)
+        let destinationFolderPath = destinationPath.URLByDeletingLastPathComponent
+        if let destinationFolderPath = destinationFolderPath where !nsFileManager.fileExistsAtPath(destinationFolderPath.absoluteString) {
+            _ = try? nsFileManager.createDirectoryAtPath(destinationFolderPath.absoluteString, withIntermediateDirectories: true, attributes: nil)
+        }
+        try data.writeToURL(destinationPath, options: NSDataWritingOptions.AtomicWrite)
     }
     
     /**
@@ -82,16 +87,4 @@ internal class FileManager {
     internal func remove(path path: String) throws {
         try! self.nsFileManager.removeItemAtURL(self.basePath.URLByAppendingPathComponent(path))
     }
-}
-
-
-// MARK: - FileManager Errors
-
-/**
- FileManager errors.
- 
- - UndefinedReferenceDir: SZ_REFERENCE_DIR is not defined.
- */
-internal enum FileManagerError: ErrorType {
-    case UndefinedReferenceDir
 }

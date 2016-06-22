@@ -12,13 +12,13 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## :white_check_mark: TODO List
-- [ ] Implement validator
-- [ ] Support folders for snapshots
-- [ ] Test missing components (Nimble Expectation, Szimpla Assertion, SnapshotFetcher)
+- [ ] Test missing components:
+  - [ ] Nimble expectations.
+  - [ ] Szimpla Assertion.
+  - [ ] SnapshotFetcher
 - [ ] Add a example app
 
 ## Features backlog
-- Support custom validators.
 - Implement new filters for requests based on headers, parameters, ....
 
 ## Requirements
