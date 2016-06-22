@@ -2,5 +2,5 @@ language: objective-c
 before_install:
 - bundle install
 script:
+- bundle exec pod repo update
 - bundle exec fastlane ci
-- bundle exec pod lib lint
