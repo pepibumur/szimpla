@@ -89,18 +89,25 @@ It the validation fails, it'll assert using `XCTAssert` printing the validation 
 Szimpla also provides expectations for [Nimble](https://github.com/quick/nimble) if you want to use it with your unit tests. Here's an example of how Szimpla would be used in that case:
 
 ```swift
-# Recording requests
+// Recording requests
 expect {
   sendRequest1()
   sendRequest2()
 }.to(recordRequests(name: "my_test_requests"))
 
-# Matching requests
+// Matching requests
 expect{
   sendRequest1()
   sendRequest2()
 }.to(matchRequests(name: "my_test_requests"))
 ```
+
+## Filters
+Since you might not be interested in all the requests you can decide which ones using filters. Filters conform the protocol `RequestFilter` and it's public, thus, you can create your own filters. When requests are **recorded** or **matched** you can provide a filter to be used instead of recording all the requests.
+
+Szimpla also provides some default filters that you can use:
+
+- **URLRequestFilter:** Filters all these URLs that match the base URL.
 
 ## References
 - ios-snapshot-testing: [Link](https://github.com/facebook/ios-snapshot-test-case)
