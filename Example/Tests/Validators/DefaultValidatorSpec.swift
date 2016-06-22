@@ -26,7 +26,32 @@ class DefaultValidatorSpec: QuickSpec {
                     }.to(throwError(errorType: SnapshotValidationError.self))
                 }
             }
-        
+            
+            context("when requests match") {
+                it("shouldn't throw an error") {
+                    let recorded = Request(body: ["test1": "value1", "test2": 2, "test3": ["test11": "value11"]], url: "test.com", parameters: ["test1": "value1", "test2": "value2"])
+                    let local = Request(body: ["test2": 2, "test3": ["test11": "value11"]], url: "test.com", parameters: ["test1": "value1"])
+                    let snapshotRecorded = Snapshot(requests: [recorded])
+                    let snapshotLocal = Snapshot(requests: [local])
+                    expect {
+                        try subject.validate(recordedSnapshot: snapshotRecorded, localSnapshot: snapshotLocal)
+                    }
+                    .toNot(throwError())
+                }
+            }
+            
+            context("when requests do not match") {
+                it("shouldn't throw an error") {
+                    let recorded = Request(body: ["test1": "value1", "test2": 2, "test3": ["test11": "value11"]], url: "test.com", parameters: ["test1": "value1", "test2": "value2"])
+                    let local = Request(body: ["test2": 5, "test3": ["test11": "value11"]], url: "test.com", parameters: ["test1": "value1"])
+                    let snapshotRecorded = Snapshot(requests: [recorded])
+                    let snapshotLocal = Snapshot(requests: [local])
+                    expect {
+                        try subject.validate(recordedSnapshot: snapshotRecorded, localSnapshot: snapshotLocal)
+                        }
+                        .to(throwError())
+                }
+            }
         }
         
     }

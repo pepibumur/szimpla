@@ -90,7 +90,7 @@ public struct DefaultValidator: Validator {
             }
             // ARRAY
             else if let localElementArray = localElementJson.array {
-                try self.validateArray(key: key, recordedJSON: recordedJSON, localJSON: localJSON)
+                try self.validateArray(key: key, recordedJSON: localElementJson, localJSON: localElementJson)
             }
             // STRING
             else if let localElementString = localElementJson.string {
@@ -98,7 +98,7 @@ public struct DefaultValidator: Validator {
             }
             // NUMBER
             else if let localElementNumber = localElementJson.number {
-                try self.validateNumber(key: key, recordedJSON: recordedJSON, localJSON: localJSON)
+                try self.validateNumber(key: key, recordedJSON: recordedElementJson, localJSON: localElementJson)
             }
         }
     }
@@ -170,7 +170,6 @@ public struct DefaultValidator: Validator {
      - throws: Throws an error if it doesn't match.
      */
     private func match(key key: String, regexString: String, withString string: String) throws {
-        //TODO
         if !string.containsString(regexString) {
             throw SnapshotValidationError.InvalidValue(key: key, expected: regexString, got: string)
         }
