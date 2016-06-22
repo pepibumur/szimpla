@@ -11,6 +11,13 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Features
+- Compatible with iOS.
+- Support for Acceptance Tests.
+- Expectaions for [Nimble](https://github.com/quick/nimble)
+- Support for custom validators.
+- Support for custom filters.
+
 ## :white_check_mark: TODO List
 - [ ] Test missing components:
   - [ ] Nimble expectations.
