@@ -12,13 +12,9 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## :white_check_mark: TODO List
-- [ ] Update the `.podspec` with the Nimble subspec metatada.
-- [ ] Test Nimble matcher.
-- [ ] Add Nimble record matcher.
+- [ ] Implement validator
 - [ ] Support folders for snapshots
-- [ ] Update Szimpla to offer the public validate method XCAsserting
-- [ ] Test missing components
-- [ ] Update the README to include details about how to use the Nimble matcher.
+- [ ] Test missing components (Nimble Expectation, Szimpla Assertion, SnapshotFetcher)
 - [ ] Add a example app
 
 ## Features backlog
@@ -84,7 +80,7 @@ Szimpla.instance.validate(name: "user_share_tracking") // Saves the recorded req
 
 It the validation fails, it'll assert using `XCTAssert` printing the validation error. :tada:
 
-## Nimble + Szimpla
+## Nimble :heart: Szimpla
 
 Szimpla also provides expectations for [Nimble](https://github.com/quick/nimble) if you want to use it with your unit tests. Here's an example of how Szimpla would be used in that case:
 
