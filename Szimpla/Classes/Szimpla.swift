@@ -14,15 +14,18 @@ public class Szimpla {
     private let requestFetcher: RequestFetcher
     private let snapshotFetcher: (name: String) -> SnapshotFetcher
     private let snapshotValidator: SnapshotValidator
+    private let asserter: XCAsserter
     
     
     // MARK: - Init
     
-    internal init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter, snapshotValidator: SnapshotValidator, requestFetcher: RequestFetcher, snapshotFetcher: (String) -> SnapshotFetcher) {
+    internal init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter, snapshotValidator: SnapshotValidator, requestFetcher: RequestFetcher, snapshotFetcher: (String) -> SnapshotFetcher,
+                  asserter: XCAsserter = XCAsserter()) {
         self.requestsToSnapshotAdapter = requestsToSnapshotAdapter
         self.snapshotValidator = snapshotValidator
         self.requestFetcher = requestFetcher
         self.snapshotFetcher = snapshotFetcher
+        self.asserter = asserter
     }
     
     public convenience init() {
@@ -43,11 +46,17 @@ public class Szimpla {
     public func validate(name: String) {
         let testRequests = self.requestFetcher.tearDown()
         let snapshotResult = self.requestsToSnapshotAdapter.adapt(testRequests)
-        XCTAssert(snapshotResult.error == nil, "SZIMPLA: Test ~~\(name)~~ failed fetching the requests")
+        if snapshotResult.error != nil {
+            self.asserter.assert(withMessage: "SZIMPLA: Test ~~\(name)~~ failed fetching the requests")
+        }
         let localSnapshotResult = self.snapshotFetcher(name: name).fetch()
-        XCTAssert(localSnapshotResult.error == nil, "SZIMPLA: Test ~~\(name)~~ not found")
+        if localSnapshotResult.error != nil {
+            asserter.assert(withMessage: "SZIMPLA: Test ~~\(name)~~ not found")
+        }
         let validationResult = self.snapshotValidator.validate(snapshotResult.value, localSnapshot: localSnapshotResult.value)
-        XCTAssert(validationResult.error == nil, "SZIMPLA: Test ~~\(name)~~ validation failed:\n\(validationResult.error)")
+        if validationResult.error != nil {
+            self.asserter.assert(withMessage: "SZIMPLA: Test ~~\(name)~~ validation failed:\n\(validationResult.error)")
+        }
     }
     
 }
