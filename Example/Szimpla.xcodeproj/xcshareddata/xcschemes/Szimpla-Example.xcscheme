@@ -40,7 +40,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "NO">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -56,16 +56,16 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "Szimpla_Example.app"
-            BlueprintName = "Szimpla_Example"
+            BlueprintIdentifier = "607FACE41AFB9204008FA782"
+            BuildableName = "Szimpla_Tests.xctest"
+            BlueprintName = "Szimpla_Tests"
             ReferencedContainer = "container:Szimpla.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "SZ_REFERENCE_DIR"
-            value = "/"
+            value = "$(SOURCE_ROOT)/Tests/Fixtures"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
@@ -95,7 +95,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "SZ_REFERENCE_DIR"
-            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/NetworkSnapshots"
+            value = "$(SOURCE_ROOT)/Tests/Fixtures"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

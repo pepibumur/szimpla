@@ -4,21 +4,45 @@ internal class URLRecordProtocol: NSURLProtocol {
     
     // MARK: - Attributes
     
-    private static var requests: [NSURLRequest] = []
-    private static var registered: Bool = false
+    /**
+     List of recorded requests
+     */
+    internal static var requests: [NSURLRequest] = []
+    
+    /**
+     Returns true if the protocol is already registered.
+     */
+    internal static var registered: Bool = false
     
     
     // MARK: - Internal
     
-    internal class func tearUp() {
-        assert(!registered, "Request recording doesn't support concurrency")
+    /**
+     Starts recording any sent request.
+     
+     - throws: throws an URLRecordProtocolError if this method gets called when it's already recording.
+     */
+    internal class func tearUp() throws {
+        if registered {
+            throw URLRecordProtocolError.AlreadyRegistered
+            return
+        }
         requests.removeAll()
         NSURLProtocol.registerClass(URLRecordProtocol)
+        URLRecordProtocol.registered = true
     }
     
+    /**
+     Stops recording requests.
+     
+     - returns: All registered requests.
+     */
     internal class func tearDown() -> [NSURLRequest] {
         NSURLProtocol.unregisterClass(URLRecordProtocol)
-        return requests
+        URLRecordProtocol.registered = false
+        var copiedRequests = self.requests
+        self.requests.removeAll()
+        return copiedRequests
     }
     
     
@@ -29,4 +53,14 @@ internal class URLRecordProtocol: NSURLProtocol {
         return false
     }
     
+}
+
+
+/**
+ URLRecordProtocol Errors
+ 
+ - AlreadyRegistered: Returned when someones tries to register the protocol when it's already registered.
+ */
+internal enum URLRecordProtocolError: ErrorType {
+    case AlreadyRegistered
 }

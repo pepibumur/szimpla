@@ -8,10 +8,10 @@ class SnapshotSpec: QuickSpec {
     override func spec() {
         describe("==") {
             it("should return true if both snapshots are the same") {
-                //TODO
-//                let snapshotA: Snapshot = Snapshot(parameters: ["param": "value"], headers: ["header": "value"], body: ["body": "value"])
-//                let snapshotB: Snapshot = Snapshot(parameters: ["param": "value"], headers: ["header": "value"], body: ["body": "value"])
-//                expect(snapshotA == snapshotB) == true
+                let request = Request(body: [:], url: "", parameters: [:])
+                let snapshot1 = Snapshot(requests: [request])
+                let snapshot2 = Snapshot(requests: [request])
+                expect(snapshot1 == snapshot2).to(beTrue())
             }
         }
     }

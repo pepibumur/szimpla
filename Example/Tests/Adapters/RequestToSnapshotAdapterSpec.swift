@@ -11,7 +11,7 @@ class RequestToSnapshotAdapterSpec: QuickSpec {
         var result: Result<Snapshot, RequestsToSnapshotError>!
         
         beforeSuite {
-            subject = RequestsToSnapshotAdapter(name: "test")
+//            subject = RequestsToSnapshotAdapter(name: "test")
         }
         
         describe("-adapt:") {

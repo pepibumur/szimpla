@@ -1,39 +1,38 @@
 import Foundation
 
+/// Fetches the recorded requests filtering them
 internal class RequestFetcher {
-    
-    // MARK: - Attributes
-    
-    private let baseURL: NSURL?
-    
-    
-    // MARK: - Init
-    
-    internal init(baseURL: NSURL? = nil) {
-        self.baseURL = baseURL
-    }
-    
     
     // MARK: - Internal
     
-    internal func tearUp() {
-        URLRecordProtocol.tearUp()
+    /**
+     Starts recording the requests.
+     
+     - throws: throws an error if it cannot start recording the requests.
+     */
+    internal func tearUp() throws {
+        try URLRecordProtocol.tearUp()
     }
     
-    
-    internal func tearDown() -> [NSURLRequest] {
+    /**
+     Stops recording and returns the requests filtering them.
+     
+     - parameter filter: filter for the requests.
+     
+     - returns: Filtered requests.
+     */
+    internal func tearDown(filter filter: RequestFilter! = nil) -> [NSURLRequest] {
         let requests = URLRecordProtocol.tearDown()
-        return filtered(requests: requests)
+        return self.filtered(requests: requests, filter: filter)
     }
     
     
     // MARK: - Private
     
-    private func filtered(requests requests: [NSURLRequest]) -> [NSURLRequest] {
+    private func filtered(requests requests: [NSURLRequest], filter: RequestFilter!) -> [NSURLRequest] {
         return requests.filter { (request) -> Bool in
-            let url = request.URL?.absoluteString ?? ""
-            guard let baseURL = baseURL else { return true }
-            return url.containsString(baseURL.absoluteString)
+            if filter == nil { return true }
+            return filter.include(request: request)
         }
     }
     

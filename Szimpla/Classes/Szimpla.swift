@@ -32,12 +32,12 @@ public class Szimpla {
     
     // MARK: - Public
     
-    public func start() {
-        self.requestFetcher.tearUp()
+    public func start() throws {
+        try self.requestFetcher.tearUp()
     }
     
-    public func record(name name: String!) {
-        let requests = self.requestFetcher.tearDown()
+    public func record(name name: String!, filter: RequestFilter! = nil) {
+        let requests = self.requestFetcher.tearDown(filter: filter)
     }
     
     public func validate(name: String) {

@@ -12,6 +12,9 @@ internal struct Snapshot {
     let requests: [Request]
 }
 
+
+// MARK: - Snapshot<Equatable>
+
 extension Snapshot: Equatable {}
 
 internal func == (lhs: Snapshot, rhs: Snapshot) -> Bool {

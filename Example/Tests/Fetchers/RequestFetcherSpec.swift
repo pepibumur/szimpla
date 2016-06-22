@@ -9,42 +9,39 @@ class RequestFetcherSpec: QuickSpec {
     override func spec() {
         
         var subject: RequestFetcher!
+        var filter: URLRequestFilter!
+        
+        beforeEach {
+            filter = "http://test.com"
+            subject = RequestFetcher()
+        }
+        
+        afterEach {
+            subject.tearDown()
+        }
+        
+        describe("-tearUp") {
+            it("should register the URLRecordProtocol") {
+                try! subject.tearUp()
+                expect(URLRecordProtocol.registered).to(beTrue())
+            }
+        }
+        
         
         describe("-tearDown") {
-            
-            context("when there's a base URL") {
-                
-                var baseURL: NSURL!
-                
-                beforeEach {
-                    baseURL = NSURL(string: "http://test")
-                    subject = RequestFetcher(baseURL: baseURL)
-                }
-                
+            it("should unregister the URLRecordProtocol") {
+                try! subject.tearUp()
+                subject.tearDown()
+                expect(URLRecordProtocol.registered).to(beFalse())
             }
             
-            context("when there isn't a base URL") {
-                
-                beforeEach {
-                    subject = RequestFetcher()
-                }
-                
-                it("should return all the requests") {
-                    subject.tearUp()
-                    NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://test")!).resume()
-                    NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://test2")!).resume()
-                    NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://test3")!).resume()
-                    
-                    waitUntil(timeout: 3, action: { (done) in
-                        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.8 * Double(NSEC_PER_SEC)))
-                        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                            expect(subject.tearDown().count) == 3
-                            done()
-                        })
-                    })
-                }
+            it("should return the requests filtered") {
+                try! subject.tearUp()
+                URLRecordProtocol.canInitWithRequest(NSURLRequest(URL: NSURL(string: "http://google.com")!))
+                URLRecordProtocol.canInitWithRequest(NSURLRequest(URL: NSURL(string: "http://test.com")!))
+                let requests = subject.tearDown(filter: filter)
+                expect(requests.count) == 1
             }
-            
         }
         
     }

@@ -6,7 +6,7 @@ internal class FileManager {
     // MARK: - Singleton
     
     /// Singletion instance
-    internal static let instance: FileManager = try! FileManager()!
+    internal static let instance: FileManager = try! FileManager.fromEnvironmentVar()
     
     
     // MARK: - Attributes
@@ -14,21 +14,36 @@ internal class FileManager {
     /// Base path
     private let basePath: NSURL
     
+    /// File Manager
+    private let nsFileManager: NSFileManager
+    
     
     // MARK: - Init
     
     /**
-     Initializes the FileManager
+     Initializes the Szimpla file manager to be used from the provided base path.
      
-     - throws: Throws an error if the SZ_REFERENCE_DIR variable is not defined
+     - parameter basePath: Base path to read the snapshots from.
      
-     - returns: initialized FileManager
+     - returns: Initialized FileManager
      */
-    init?() throws {
+    internal init(basePath: NSURL, nsFileManager: NSFileManager = NSFileManager.defaultManager()) {
+        self.basePath = basePath
+        self.nsFileManager = nsFileManager
+    }
+    
+    /**
+     Initializes a Szimpla file manager using the user defined environment variable.
+     
+     - throws: Throws an FileManagerError if the directory hasn't been defined by the user.
+     
+     - returns: Initialized FileManager
+     */
+    private static func fromEnvironmentVar() throws -> FileManager {
         guard let basePathString = NSProcessInfo.processInfo().environment["SZ_REFERENCE_DIR"] else {
             throw FileManagerError.UndefinedReferenceDir
         }
-        self.basePath = NSURL(fileURLWithPath: basePathString)
+        return FileManager(basePath: NSURL(fileURLWithPath: basePathString))
     }
     
     
@@ -57,6 +72,16 @@ internal class FileManager {
         try data.writeToURL(self.basePath.URLByAppendingPathComponent(path), options: NSDataWritingOptions.AtomicWrite)
     }
     
+    /**
+     Removes the data at the given path.
+     
+     - parameter path: path to remove the data from.
+     
+     - throws: an exception if the data cannot be removed.
+     */
+    internal func remove(path path: String) throws {
+        try! self.nsFileManager.removeItemAtURL(self.basePath.URLByAppendingPathComponent(path))
+    }
 }
 
 
