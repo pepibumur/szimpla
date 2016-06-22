@@ -15,6 +15,11 @@ Pod::Spec.new do |s|
   s.dependency 'SwiftyJSON'
   s.dependency 'NSURL+QueryDictionary'
   s.frameworks = 'XCTest'
+
+
+  s.subspec "Nimble" do |ss|
+    ss.dependency 'Nimble'
+  end
   # s.resource_bundles = {
   #   'Szimpla' => ['Szimpla/Assets/*.png']
   # }

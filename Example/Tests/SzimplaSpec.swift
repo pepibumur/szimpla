@@ -28,6 +28,9 @@ class SzimplaSpec: QuickSpec {
         
         describe("-record:name:filter") {
             it("should tear down the request fetcher") {
+                waitUntil(action: { (done) in
+                    
+                })
                 try! subject.start()
                 subject.record(name: "test")
                 expect(requestFetcher.tearDownCalled).to(beTrue())

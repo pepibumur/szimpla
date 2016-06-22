@@ -31,5 +31,6 @@ class URLRecordProtocolSpec: QuickSpec {
             _ = URLRecordProtocol.tearDown()
             expect(URLRecordProtocol.requests.count) == 0
         }
+        
     }
 }

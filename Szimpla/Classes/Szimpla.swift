@@ -43,20 +43,34 @@ public class Szimpla {
         let requests = self.requestFetcher.tearDown(filter: filter)
     }
     
-    public func validate(name: String) {
+    internal func validate(name: String) throws {
         let testRequests = self.requestFetcher.tearDown()
         let snapshotResult = self.requestsToSnapshotAdapter.adapt(testRequests)
         if snapshotResult.error != nil {
-            self.asserter.assert(withMessage: "SZIMPLA: Test ~~\(name)~~ failed fetching the requests")
+            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(name)~~ failed fetching the requests")
+            return
         }
         let localSnapshotResult = self.snapshotFetcher(name: name).fetch()
         if localSnapshotResult.error != nil {
-            asserter.assert(withMessage: "SZIMPLA: Test ~~\(name)~~ not found")
+            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(name)~~ not found")
+            return
         }
         let validationResult = self.snapshotValidator.validate(snapshotResult.value, localSnapshot: localSnapshotResult.value)
         if validationResult.error != nil {
-            self.asserter.assert(withMessage: "SZIMPLA: Test ~~\(name)~~ validation failed:\n\(validationResult.error)")
+            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(name)~~ validation failed:\n\(validationResult.error)")
+            return
         }
     }
     
+//    public func validate(name: String) {
+//        
+//    }
+//    
+}
+
+
+// MARK: - SzimplaValidationError
+
+public struct SzimplaValidationError: ErrorType {
+    let message: String
 }

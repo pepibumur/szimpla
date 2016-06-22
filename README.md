@@ -11,6 +11,13 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## TODO
+- [ ] Update the `.podspec` with the Nimble subspec metatada.
+- [ ] Test Nimble matcher.
+- [ ] Update Szimpla to offer the public validate method XCAsserting
+- [ ] Add a example app
+- [ ] Test missing components
+
 ## Requirements
 
 ## Installation
