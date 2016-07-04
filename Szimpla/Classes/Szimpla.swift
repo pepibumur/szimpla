@@ -15,7 +15,6 @@ public class Szimpla {
     private let snapshotFetcher: (path: String) -> SnapshotFetcher
     private let snapshotValidator: Validator
     private let asserter: XCAsserter
-    private let snapshotSaver: SnapshotSaver
     
     
     // MARK: - Init
@@ -24,14 +23,12 @@ public class Szimpla {
                   snapshotValidator: Validator,
                   requestFetcher: RequestFetcher,
                   snapshotFetcher: (String) -> SnapshotFetcher,
-                  asserter: XCAsserter = XCAsserter(),
-                  snapshotSaver: SnapshotSaver = SnapshotSaver()) {
+                  asserter: XCAsserter = XCAsserter()) {
         self.requestsToSnapshotAdapter = requestsToSnapshotAdapter
         self.snapshotValidator = snapshotValidator
         self.requestFetcher = requestFetcher
         self.snapshotFetcher = snapshotFetcher
         self.asserter = asserter
-        self.snapshotSaver = snapshotSaver
     }
     
     public convenience init() {
@@ -63,31 +60,36 @@ public class Szimpla {
             throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(path)~~ failed fetching the requests.")
             return
         }
-        
+        let snapshot: Snapshot = snapshotResult.value
+        let saver: SnapshotSaver = SnapshotSaver(path: path)
+        let saveResult = saver.save(snapshot)
+        if let saveError = saveResult.error {
+            throw saveError
+        }
     }
     
     /**
      Validates if the recorded requests match the previously recorded with the provided name.
      
-     - parameter name: Name of the previously recorded requests.
+     - parameter path: Path of the previously recorded requests.
      */
-    public func validate(name: String) {
+    public func validate(path path: String) {
         do {
-            try self._validate(name)
+            try self._validate(path: path)
         }
         catch where error is SzimplaValidationError {
             let validationError = error as! SzimplaValidationError
             self.asserter.assert(withMessage: validationError.message)
         }
         catch {
-            self.asserter.assert(withMessage: "SZIMPLA: Test ~~\(name)~~ unexpected error.")
+            self.asserter.assert(withMessage: "SZIMPLA: Test ~~\(path)~~ unexpected error.")
         }
     }
     
     
     // MARK: - Internal
     
-    internal func _validate(path: String) throws {
+    internal func _validate(path path: String) throws {
         let requests = self.requestFetcher.tearDown()
         let snapshotResult = self.requestsToSnapshotAdapter.adapt(requests)
         if snapshotResult.error != nil {

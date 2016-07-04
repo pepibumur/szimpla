@@ -14,7 +14,7 @@ internal enum SnapshotToDataError: ErrorType, CustomStringConvertible {
     var description: String {
         switch self {
         case .SerializationError(let error):
-            return "Error serializing the Snapshot: \(error)"
+            return  "Error serializing the Snapshot: \(error)"
         }
     }
 }

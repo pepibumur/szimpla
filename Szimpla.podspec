@@ -19,11 +19,5 @@ Pod::Spec.new do |s|
 
   # Files
   s.source_files = 'Szimpla/Classes/**/*'
-  s.exclude_files = 'Szimpla/Classes/Expectations/**'
 
-
-  s.subspec "Nimble" do |ss|
-    ss.dependency 'Nimble'
-    ss.source_files = 'Szimpla/Classes/**/*', 'Szimpla/Classes/Expectations/**'
-  end
 end

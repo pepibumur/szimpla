@@ -1,7 +1,7 @@
 import Foundation
 
 /// Saves snapshots into the disk.
-internal class SnapshotSaver: Saver<(name: String, snapshot: Snapshot), SnapshotSaverError> {
+internal class SnapshotSaver: Saver<Snapshot, SnapshotSaverError> {
 
     // MARK: - Attributes
     
@@ -11,6 +11,8 @@ internal class SnapshotSaver: Saver<(name: String, snapshot: Snapshot), Snapshot
     /// Adapter that adapts snapshots into data.
     private let snapshotToDataAdapter: SnapshotToDataAdapter
     
+    /// Path where the snapshot will be saved.
+    private let path: String
     
     // MARK: - Init
     
@@ -22,7 +24,8 @@ internal class SnapshotSaver: Saver<(name: String, snapshot: Snapshot), Snapshot
      
      - returns: Initialized SnapshotSaver.
      */
-    internal init(fileManager: FileManager = FileManager.instance, snapshotToDataAdapter: SnapshotToDataAdapter = SnapshotToDataAdapter()) {
+    internal init(path: String, fileManager: FileManager = FileManager.instance, snapshotToDataAdapter: SnapshotToDataAdapter = SnapshotToDataAdapter()) {
+        self.path = path
         self.fileManager = fileManager
         self.snapshotToDataAdapter = snapshotToDataAdapter
     }
@@ -30,13 +33,13 @@ internal class SnapshotSaver: Saver<(name: String, snapshot: Snapshot), Snapshot
     
     // MARK: - Saver
     
-    override func save(input: (path: String, snapshot: Snapshot)) -> Result<Void, SnapshotSaverError> {
-        let dataResult = self.snapshotToDataAdapter.adapt(input.snapshot)
+    override func save(snapshot: Snapshot) -> Result<Void, SnapshotSaverError> {
+        let dataResult = self.snapshotToDataAdapter.adapt(snapshot)
         if let adaptError = dataResult.error {
             return Result.Error(.AdaptError(adaptError))
         }
         do {
-            try self.fileManager.save(data: dataResult.value, path: input.path)
+            try self.fileManager.save(data: dataResult.value, path: self.path)
             return Result.Success(())
         }
         catch {
