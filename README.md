@@ -14,13 +14,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Features
 - Compatible with iOS.
 - Support for Acceptance Tests.
-- Expectaions for [Nimble](https://github.com/quick/nimble)
 - Support for custom validators.
 - Support for custom filters.
 
 ## :white_check_mark: TODO List
 - [ ] Test missing components:
-  - [ ] Nimble expectations.
   - [ ] Szimpla Assertion.
   - [ ] SnapshotFetcher
 - [ ] Add a example app
@@ -37,7 +35,6 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod "Szimpla"
-pod "Szimpla/Nimbe" # If you're interested in Nimble matchers
 ```
 
 ## How to use it
@@ -86,24 +83,6 @@ Szimpla.instance.validate(name: "user_share_tracking") // Saves the recorded req
 ```
 
 It the validation fails, it'll assert using `XCTAssert` printing the validation error. :tada:
-
-## Nimble :heart: Szimpla
-
-Szimpla also provides expectations for [Nimble](https://github.com/quick/nimble) if you want to use it with your unit tests. Here's an example of how Szimpla would be used in that case:
-
-```swift
-// Recording requests
-expect {
-  sendRequest1()
-  sendRequest2()
-}.to(recordRequests(name: "my_test_requests"))
-
-// Matching requests
-expect{
-  sendRequest1()
-  sendRequest2()
-}.to(matchRequests(name: "my_test_requests"))
-```
 
 ## Filters
 Since you might not be interested in all the requests you can decide which ones using filters. Filters conform the protocol `RequestFilter` and it's public, thus, you can create your own filters. When requests are **recorded** or **matched** you can provide a filter to be used instead of recording all the requests.
