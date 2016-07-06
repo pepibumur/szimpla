@@ -7,8 +7,7 @@ internal class DataToSnapshotAdapter: Adapter<NSData, Snapshot, DataToSnapshotEr
     // MARK: - Adapter
     
     internal override func adapt(input: NSData) -> Result<Snapshot,DataToSnapshotError>! {
-        let json = JSON(data: input)
-        let jsonRequests = json["requests"].arrayValue
+        let jsonRequests = JSON(data: input).arrayValue
         let requests = jsonRequests.map(self.request)
         return Result.Success(Snapshot(requests: requests))
     }

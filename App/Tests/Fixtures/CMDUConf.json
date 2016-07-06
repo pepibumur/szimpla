@@ -1,0 +1,20 @@
+[
+  {
+    "body" : {
+
+    },
+    "url" : "http:\/\/analytics.com\/?screen=second",
+    "parameters" : {
+      "screen" : "second"
+    }
+  },
+  {
+    "body" : {
+
+    },
+    "url" : "http:\/\/analytics.com\/?screen=first",
+    "parameters" : {
+      "screen" : "first"
+    }
+  }
+]

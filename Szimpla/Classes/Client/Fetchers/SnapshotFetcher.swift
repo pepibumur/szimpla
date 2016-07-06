@@ -47,7 +47,7 @@ internal class SnapshotFetcher: Fetcher<Snapshot, SnapshotFetcherError> {
     // MARK: - Fetcher
     
     override func fetch() -> Result<Snapshot, SnapshotFetcherError>! {
-        guard let data = self.fileManager.read(path: self.path(fromName: self.path)) else {
+        guard let data = self.fileManager.read(path: self.path) else {
             return Result.Error(SnapshotFetcherError.NotFound(path))
         }
         let snapshotResult = dataToSnapshotAdapter.adapt(data)
@@ -57,11 +57,4 @@ internal class SnapshotFetcher: Fetcher<Snapshot, SnapshotFetcherError> {
         return Result.Success(snapshotResult.value)
     }
 
-    
-    // MARK: - Private
-    
-    private func path(fromName name: String) -> String {
-        return "\(name).json"
-    }
-    
 }

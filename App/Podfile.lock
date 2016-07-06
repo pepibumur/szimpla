@@ -6,7 +6,8 @@ PODS:
     - NSURL+QueryDictionary
     - Swifter
     - SwiftyJSON
-  - Szimpla/Tests (0.0.2)
+  - Szimpla/Tests (0.0.2):
+    - SwiftyJSON
 
 DEPENDENCIES:
   - NSURL+QueryDictionary
@@ -21,7 +22,7 @@ SPEC CHECKSUMS:
   NSURL+QueryDictionary: dd0a5fec689a9b4780b6fa0e0225c01ca3ea653e
   Swifter: 20493bf45b97e3296f910665a1211129cf282db3
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  Szimpla: a8e21d890abba4a728c09a9634668635fef2461a
+  Szimpla: c64c990b0e03dc3c5690fd04413832f5fb6fbd9c
 
 PODFILE CHECKSUM: 3c97ab7979880372d1a024b7cf15c479a5b02e6d
 

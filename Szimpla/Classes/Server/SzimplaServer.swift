@@ -4,11 +4,11 @@ import SwiftyJSON
 
 // MARK: - Szimpla
 
-public struct Szimpla {
+public struct SzimplaServer {
     
     // MARK: - Singleton
     
-    public static var instance: Szimpla = Szimpla()
+    public static var instance: SzimplaServer = SzimplaServer()
     
     
     // MARK: - Attributes

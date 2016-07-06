@@ -8,13 +8,13 @@ internal class SzimplaURLProtocol: NSURLProtocol {
     
     // MARK: - Static
     
-    private static  var requests: [JSON] = []
+    private static  var requests: [[String: AnyObject]] = []
     
     internal class func start() {
         requests.removeAll()
     }
     
-    internal class func stop() -> [JSON] {
+    internal class func stop() -> [[String: AnyObject]] {
         let _requests = self.requests
         self.requests.removeAll()
         return _requests
@@ -35,8 +35,12 @@ internal class SzimplaURLProtocol: NSURLProtocol {
     
     // MARK: - Private
     
-    private static func dictionaryFromRequest(request: NSURLRequest) -> JSON {
-        return self.body(fromRequest: request)
+    private static func dictionaryFromRequest(request: NSURLRequest) -> [String: AnyObject] {
+        var dictionary: [String: AnyObject] = [:]
+        dictionary["body"] = self.body(fromRequest: request).dictionaryObject ?? [:]
+        dictionary["parameters"] = self.parameters(fromUrl: request.URL!)
+        dictionary["url"] = request.URL?.absoluteString ?? ""
+        return dictionary
     }
     
     private static func body(fromRequest request: NSURLRequest) -> JSON {
@@ -49,10 +53,6 @@ internal class SzimplaURLProtocol: NSURLProtocol {
     
     private static func parameters(fromUrl url: NSURL) -> [String: String] {
         return url.uq_queryDictionary() as? [String: String] ?? [:]
-    }
-    
-    private static func baseUrl(fromUrl url: NSURL) -> String {
-        return url.baseURL?.absoluteString ?? ""
     }
     
 }

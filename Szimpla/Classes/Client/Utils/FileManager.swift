@@ -12,7 +12,7 @@ internal class FileManager {
     // MARK: - Attributes
     
     /// Base path
-    private let basePath: NSURL
+    private let basePath: String
     
     /// File Manager
     private let nsFileManager: NSFileManager
@@ -27,7 +27,7 @@ internal class FileManager {
      
      - returns: Initialized FileManager
      */
-    internal init(basePath: NSURL, nsFileManager: NSFileManager = NSFileManager.defaultManager()) {
+    internal init(basePath: String, nsFileManager: NSFileManager = NSFileManager.defaultManager()) {
         self.basePath = basePath
         self.nsFileManager = nsFileManager
     }
@@ -43,7 +43,7 @@ internal class FileManager {
         guard let basePathString = NSProcessInfo.processInfo().environment["SZ_REFERENCE_DIR"] else {
             throw FileManagerError.UndefinedReferenceDir
         }
-        return FileManager(basePath: NSURL(fileURLWithPath: basePathString))
+        return FileManager(basePath: basePathString)
     }
     
     
@@ -57,7 +57,7 @@ internal class FileManager {
      - returns: NSData if there's data at the given path.
      */
     internal func read(path path: String) -> NSData? {
-        return NSData(contentsOfURL: self.basePath.URLByAppendingPathComponent(path))
+        return NSData(contentsOfFile: NSString(string: self.basePath).stringByAppendingPathComponent(path))
     }
     
     /**
@@ -69,12 +69,12 @@ internal class FileManager {
      - throws: an exception if the data cannot be saved.
      */
     internal func save(data data: NSData, path: String) throws {
-        let destinationPath = self.basePath.URLByAppendingPathComponent(path)
-        let destinationFolderPath = destinationPath.URLByDeletingLastPathComponent
-        if let destinationFolderPath = destinationFolderPath where !nsFileManager.fileExistsAtPath(destinationFolderPath.absoluteString) {
-            _ = try? nsFileManager.createDirectoryAtPath(destinationFolderPath.absoluteString, withIntermediateDirectories: true, attributes: nil)
+        let destinationPath = NSString(string: self.basePath).stringByAppendingPathComponent(path)
+        let destinationFolderPath = NSString(string: destinationPath).stringByDeletingLastPathComponent
+        if !nsFileManager.fileExistsAtPath(destinationFolderPath) {
+            _ = try? nsFileManager.createDirectoryAtPath(destinationFolderPath, withIntermediateDirectories: true, attributes: nil)
         }
-        try data.writeToURL(destinationPath, options: NSDataWritingOptions.AtomicWrite)
+        try data.writeToFile(destinationPath, options: NSDataWritingOptions.AtomicWrite)
     }
     
     /**
@@ -85,6 +85,7 @@ internal class FileManager {
      - throws: an exception if the data cannot be removed.
      */
     internal func remove(path path: String) throws {
-        try! self.nsFileManager.removeItemAtURL(self.basePath.URLByAppendingPathComponent(path))
+        let destinationPath = NSString(string: self.basePath).stringByAppendingPathComponent(path)
+        try! self.nsFileManager.removeItemAtPath(destinationPath)
     }
 }

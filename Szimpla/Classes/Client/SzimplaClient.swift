@@ -1,37 +1,40 @@
 import Foundation
 
-public class Szimpla {
+@objc public class SzimplaClient: NSObject {
     
     // MARK: - Instance
     
-    public static var instance: Szimpla = Szimpla()
+    public static var instance: SzimplaClient = SzimplaClient()
     
     
     // MARK: - Attributes
     
-    private let requestsToSnapshotAdapter: RequestsToSnapshotAdapter
     private let requestFetcher: RequestFetcher
     private let snapshotFetcher: (path: String) -> SnapshotFetcher
+    private let fileManager: FileManager
     private let snapshotValidator: Validator
+    private let dataToSnapshotAdapter: DataToSnapshotAdapter
     private let asserter: XCAsserter
     
     
     // MARK: - Init
     
-    internal init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter,
-                  snapshotValidator: Validator,
+    internal init(snapshotValidator: Validator,
                   requestFetcher: RequestFetcher,
                   snapshotFetcher: (String) -> SnapshotFetcher,
+                  fileManager: FileManager,
+                  dataToSnapshotAdapter: DataToSnapshotAdapter,
                   asserter: XCAsserter = XCAsserter()) {
-        self.requestsToSnapshotAdapter = requestsToSnapshotAdapter
         self.snapshotValidator = snapshotValidator
         self.requestFetcher = requestFetcher
         self.snapshotFetcher = snapshotFetcher
+        self.fileManager = fileManager
+        self.dataToSnapshotAdapter = dataToSnapshotAdapter
         self.asserter = asserter
     }
     
-    public convenience init() {
-        self.init(requestsToSnapshotAdapter: RequestsToSnapshotAdapter(), snapshotValidator: DefaultValidator(), requestFetcher: RequestFetcher(), snapshotFetcher: SnapshotFetcher.withPath)
+    public convenience override init() {
+        self.init(snapshotValidator: DefaultValidator(), requestFetcher: RequestFetcher(), snapshotFetcher: SnapshotFetcher.withPath, fileManager: FileManager.instance, dataToSnapshotAdapter: DataToSnapshotAdapter())
     }
     
     
@@ -53,18 +56,9 @@ public class Szimpla {
      - parameter filter: Filter used for selecting which requests should be recorded.
      */
     public func record(path path: String, filter: RequestFilter! = nil) throws {
-        let requests = self.requestFetcher.tearDown(filter: filter)
-        let snapshotResult = self.requestsToSnapshotAdapter.adapt(requests)
-        if snapshotResult.error != nil {
-            throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(path)~~ failed fetching the requests.")
-            return
-        }
-        let snapshot: Snapshot = snapshotResult.value
-        let saver: SnapshotSaver = SnapshotSaver(path: path)
-        let saveResult = saver.save(snapshot)
-        if let saveError = saveResult.error {
-            throw saveError
-        }
+        let _requestsData = self.requestFetcher.tearDown(filter: filter)
+        guard let requestsData = _requestsData else { return } // TODO - Throw error if there's no data
+        try self.fileManager.save(data: requestsData, path: path)
     }
     
     /**
@@ -88,17 +82,16 @@ public class Szimpla {
     
     // MARK: - Internal
     
-    internal func _validate(path path: String) throws {
-        let requests = self.requestFetcher.tearDown()
-        let snapshotResult = self.requestsToSnapshotAdapter.adapt(requests)
+    internal func _validate(path path: String, filter: RequestFilter! = nil) throws {
+        let _requestsData = self.requestFetcher.tearDown(filter: filter)
+        guard let requestsData = _requestsData else { return } // TODO - Throw error if there's no data
+        let snapshotResult = self.dataToSnapshotAdapter.adapt(requestsData)
         if snapshotResult.error != nil {
             throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(path)~~ failed fetching the requests.")
-            return
         }
         let localSnapshotResult = self.snapshotFetcher(path: path).fetch()
         if localSnapshotResult.error != nil {
             throw SzimplaValidationError(message: "SZIMPLA: Test ~~\(path)~~ not found.")
-            return
         }
         do {
             try self.snapshotValidator.validate(recordedSnapshot: snapshotResult.value, localSnapshot: localSnapshotResult.value)

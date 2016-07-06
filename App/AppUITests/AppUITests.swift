@@ -14,13 +14,13 @@ class AppUITests: XCTestCase {
     }
     
     func testDefault() {
-        try! Szimpla.instance.start()
+        try! SzimplaClient.instance.start()
         let app = XCUIApplication()
         sleep(1)
         app.buttons["Navigate"].tap()
         app.navigationBars["App.SecondView"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(0).tap()
         XCTAssert(app.buttons["Navigate"].exists, "It couldn't navigate")
-        try! Szimpla.instance.record(path: "CMDUConf.json")
+        try! SzimplaClient.instance.record(path: "CMDUConf.json")
     }
     
     func waitForElementToAppear(element: XCUIElement, timeout: NSTimeInterval = 5,  file: String = #file, line: UInt = #line) {
