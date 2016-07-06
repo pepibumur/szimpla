@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  App
 //
-//  Created by Pedro Pinera Buendia on 04/07/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Created by Pedro Pinera Buendia on 06/07/16.
+//  Copyright © 2016 es.ppinera. All rights reserved.
 //
 
 import UIKit

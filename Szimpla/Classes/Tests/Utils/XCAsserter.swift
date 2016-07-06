@@ -1,5 +1,4 @@
 import Foundation
-import XCTest
 
 /// Util for asserting test errors
 public class XCAsserter {
@@ -10,7 +9,7 @@ public class XCAsserter {
      - parameter message: Assertion message.
      */
     func assert(withMessage message: String) {
-        XCTAssert(false, message)
+//        XCTAssert(false, message)
     }
     
 }

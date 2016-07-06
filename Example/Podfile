@@ -6,11 +6,3 @@ target 'Szimpla_Tests' do
   pod 'Quick', '~> 0.8'
   pod 'Nimble', '~> 3.0'
 end
-
-target 'App' do
-  pod 'NSURL+QueryDictionary'
-end
-
-target 'AppUITests' do
-  pod 'Szimpla', :path => '../'
-end

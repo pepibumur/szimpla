@@ -9,7 +9,6 @@ PODS:
 
 DEPENDENCIES:
   - Nimble (~> 3.0)
-  - NSURL+QueryDictionary
   - Quick (~> 0.8)
   - Szimpla (from `../`)
 
@@ -24,6 +23,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   Szimpla: 1ac61a25621278481aa7fca45d09d77bfdd22290
 
-PODFILE CHECKSUM: 3b4d037dc18442fe369349490aeec3ae16436fdf
+PODFILE CHECKSUM: 1d564c9190f35139034d0e54b65f93d673b4ea32
 
 COCOAPODS: 1.0.1
