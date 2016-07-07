@@ -18,9 +18,6 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 - Support for custom filters.
 - It doesn't support concurrency.
 
-## :white_check_mark: TODO List
-- [ ] Add core with a logger
-
 ## Features backlog
 - Implement new filters for requests based on headers, parameters, ....
 
