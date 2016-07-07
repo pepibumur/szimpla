@@ -4,9 +4,15 @@ class FirstViewController: UIViewController {
 
     // MARK: - Lifecycle
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        request(url: NSURL(string: "https://analytics.com/")!, parameters: ["screen": "first"])
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "CMD+U Conf🌴"
     }
+    
+    @IBAction func userDidSelectMarcheta(sender: AnyObject) {
+        self.performSegueWithIdentifier("push", sender: nil)
+        // TODO
+    }
+
 }
 

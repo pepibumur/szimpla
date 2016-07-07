@@ -35,7 +35,7 @@ import NSURL_QueryDictionary
     override class func canonicalRequestForRequest(request: NSURLRequest) -> NSURLRequest {
         return request
     }
-    
+
     
     // MARK: - Private
     

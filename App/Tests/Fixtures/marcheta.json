@@ -1,0 +1,20 @@
+[
+  {
+    "url" : "https:\/\/analytics.com\/events?name=vamonos",
+    "body" : {
+
+    },
+    "parameters" : {
+      "name" : "vamonos"
+    }
+  },
+  {
+    "url" : "https:\/\/analytics.com\/screens?name=vamonos",
+    "body" : {
+
+    },
+    "parameters" : {
+      "name" : "quedamonOS"
+    }
+  }
+]

@@ -49,7 +49,7 @@ import SwiftyJSON
         try self.fileManager.save(data: requestsData, path: path)
     }
     
-    public func validate(path path: String, filter: RequestFilter! = nil) {
+    public func validate(path path: String, filter: RequestFilter! = nil) throws {
         do {
             let recordedRequests = try self.requestsRemoteFetcher.tearDown(filter: filter)
             let localRequests = try self.requestsLocalFetcher(path: path).fetch()

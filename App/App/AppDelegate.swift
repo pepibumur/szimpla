@@ -8,7 +8,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Setting up the server
         try! Szimpla.Server.instance.tearUp()
         return true
     }

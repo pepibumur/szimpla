@@ -2,9 +2,10 @@ import Foundation
 import NSURL_QueryDictionary
 import Szimpla
 
-internal func request(url url: NSURL, parameters: [NSObject: AnyObject] = [:]) {
-    let configuration = Szimpla.Server.instance.sessionConfiguration(fromConfiguration: NSURLSessionConfiguration.defaultSessionConfiguration())
+private let configuration = Szimpla.Server.instance.sessionConfiguration(fromConfiguration: NSURLSessionConfiguration.defaultSessionConfiguration())
+
+internal func request(url url: String, parameters: [NSObject: AnyObject] = [:]) {
     let session = NSURLSession(configuration: configuration)
-    let urlWithParameters = url.uq_URLByAppendingQueryDictionary(parameters)
+    let urlWithParameters = NSURL(string: url)!.uq_URLByAppendingQueryDictionary(parameters)
     session.dataTaskWithURL(urlWithParameters).resume()
 }

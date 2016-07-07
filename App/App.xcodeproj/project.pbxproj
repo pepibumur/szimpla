@@ -14,6 +14,8 @@
 		235842281D2CDE8E00189FF3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235842261D2CDE8E00189FF3 /* FirstViewController.swift */; };
 		235842291D2CDE8E00189FF3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235842271D2CDE8E00189FF3 /* SecondViewController.swift */; };
 		2358422B1D2CDEF800189FF3 /* Requester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358422A1D2CDEF800189FF3 /* Requester.swift */; };
+		2382BDD91D2EB4C10045DD34 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2382BDD81D2EB4C10045DD34 /* Launch.storyboard */; };
+		2382BDDB1D2EB5610045DD34 /* Marcheta.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 2382BDDA1D2EB5610045DD34 /* Marcheta.JPG */; };
 		4632A45880CD164153B4948F /* Pods_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C29DCE0E079A08087D29859 /* Pods_AppUITests.framework */; };
 		7668B6F48437C5F96C5C1E05 /* Pods_App_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB96C1275D189EEBD11B4816 /* Pods_App_AppUITests.framework */; };
 		BF6B5FD053FA6A19EDDD8E02 /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CDFDF1968390AE3C7874C /* Pods_App.framework */; };
@@ -43,6 +45,8 @@
 		235842261D2CDE8E00189FF3 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		235842271D2CDE8E00189FF3 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		2358422A1D2CDEF800189FF3 /* Requester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requester.swift; sourceTree = "<group>"; };
+		2382BDD81D2EB4C10045DD34 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		2382BDDA1D2EB5610045DD34 /* Marcheta.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Marcheta.JPG; sourceTree = "<group>"; };
 		4257BBD071EEC6B40820B298 /* Pods-AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppUITests/Pods-AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		907ECE68A37C05FA7B3904BF /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
 		A3226D2A888EA1BB0332D76C /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 		235842051D2CDDA900189FF3 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				2382BDDA1D2EB5610045DD34 /* Marcheta.JPG */,
 				235842261D2CDE8E00189FF3 /* FirstViewController.swift */,
 				235842271D2CDE8E00189FF3 /* SecondViewController.swift */,
 				235842061D2CDDA900189FF3 /* AppDelegate.swift */,
@@ -101,6 +106,7 @@
 				2358420D1D2CDDA900189FF3 /* Assets.xcassets */,
 				235842121D2CDDA900189FF3 /* Info.plist */,
 				2358422A1D2CDEF800189FF3 /* Requester.swift */,
+				2382BDD81D2EB4C10045DD34 /* Launch.storyboard */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -222,8 +228,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2382BDDB1D2EB5610045DD34 /* Marcheta.JPG in Resources */,
 				2358420E1D2CDDA900189FF3 /* Assets.xcassets in Resources */,
 				2358420C1D2CDDA900189FF3 /* Main.storyboard in Resources */,
+				2382BDD91D2EB4C10045DD34 /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

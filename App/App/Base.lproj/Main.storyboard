@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--First View Controller-->
@@ -17,21 +18,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="#vamonOS 🍷??" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzR-W3-Mnp">
+                                <rect key="frame" x="169.5" y="229" width="228" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrF-p4-coO">
-                                <rect key="frame" x="270" y="285" width="61" height="30"/>
-                                <state key="normal" title="Navigate"/>
+                                <rect key="frame" x="256" y="285" width="88" height="30"/>
+                                <state key="normal" title="De Marcheta"/>
                                 <connections>
-                                    <segue destination="Hbg-2w-5qt" kind="push" id="v26-t5-0xE"/>
+                                    <action selector="userDidSelectMarcheta:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EZZ-zw-DPT"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DrF-p4-coO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ds7-J3-FO7"/>
+                            <constraint firstItem="hzR-W3-Mnp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VWp-kO-YeO"/>
+                            <constraint firstItem="DrF-p4-coO" firstAttribute="top" secondItem="hzR-W3-Mnp" secondAttribute="bottom" constant="20" id="iam-Mq-SdJ"/>
                             <constraint firstItem="DrF-p4-coO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qa5-Ky-AmW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XNm-fN-nkN"/>
+                    <connections>
+                        <segue destination="Hbg-2w-5qt" kind="push" identifier="push" id="hoA-In-z67"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,18 +61,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdF-G6-cwS">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YKI-cI-8Sp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZdF-G6-cwS" firstAttribute="centerX" secondItem="K6q-UR-TQe" secondAttribute="centerX" id="9kh-PG-JNV"/>
-                            <constraint firstItem="ZdF-G6-cwS" firstAttribute="centerY" secondItem="K6q-UR-TQe" secondAttribute="centerY" id="DDw-7v-h23"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="YKI-cI-8Sp" secondAttribute="bottom" id="ASu-iH-2gg"/>
+                            <constraint firstItem="YKI-cI-8Sp" firstAttribute="top" secondItem="K6q-UR-TQe" secondAttribute="topMargin" id="NsS-uz-fJA"/>
+                            <constraint firstItem="YKI-cI-8Sp" firstAttribute="leading" secondItem="K6q-UR-TQe" secondAttribute="leading" id="Qss-f1-aai"/>
+                            <constraint firstAttribute="trailing" secondItem="YKI-cI-8Sp" secondAttribute="trailing" id="pNE-Yl-xBJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7dB-88-Noc"/>
+                    <connections>
+                        <outlet property="imageView" destination="YKI-cI-8Sp" id="VN6-q2-ktm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9b-GR-bsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

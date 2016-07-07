@@ -23,17 +23,18 @@
 
 ---
 
+
+### :package: *can* work as expected
+### ↔️ but *not* the integration
+
+---
+
 ## _Integration_ tests
 
 ---
 
 ## We test the units of code
 ### _As a system_ :package: ↔️ :package:
-
----
-
-### :package: *can* work as expected
-### ↔️ but *not* the integration
 
 ---
 
@@ -118,22 +119,6 @@ app.tables.staticTexts["Enrique Iglesias"].tap()
 
 ---
 
-```swift
-class StreamViewController: UIViewController {
-  func viewDidLoad() {
-    super.viewDidLoad()
-    self.syncService.sync() // SYNC REQUEST
-    self.eventGateway.screen("Stream") // ANALYTICS REQUEST
-  }
-
-  func userDidSelectTrack(track: Track) {
-    self.eventGateway.event("open_player") // ANALYTICS REQUEST
-  }
-}
-```
-
----
-
 #### 🌍that reflects on UI
 ## API interaction
 #### 🌍that doesn't reflect on UI
@@ -170,6 +155,11 @@ enriqueCell.tap() // -----> WAS IT REALLY SENT?
 
 ---
 
+## What can I do then? 🤔
+#### *(Analytics might be critical for your business 💰)*
+
+---
+
 # Szimpla
 ### _Network Testing in Swift_
 #### github.com/pepibumur/szimpla
@@ -192,14 +182,6 @@ enriqueCell.tap() // -----> WAS IT REALLY SENT?
 
 ```swift
 class AppUITests: XCTestCase {
-
-    var app: XCUIApplication!
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        app = XCUIApplication()
-        app.launch()
-    }
 
     func testDefault() {
         try! Szimpla.instance.start()
@@ -247,14 +229,6 @@ class AppUITests: XCTestCase {
 ```swift
 class AppUITests: XCTestCase {
 
-    var app: XCUIApplication!
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        app = XCUIApplication()
-        app.launch()
-    }
-
     func testDefault() {
         try! Szimpla.instance.start()
         let app = XCUIApplication()
@@ -263,6 +237,13 @@ class AppUITests: XCTestCase {
     }
 }
 ```
+
+---
+
+## Live Demo
+### :grinning: 🌴
+
+![fill](images/Barcelona.jpeg)
 
 ---
 
@@ -278,7 +259,7 @@ class AppUITests: XCTestCase {
 
 ```swift
 public protocol Validator {
-    func validate(recordedSnapshot recordedSnapshot: Snapshot, localSnapshot: Snapshot) throws
+  func validate(recordedRequests recordedRequests: [Request], localRequests: [Request]) throws
 }
 ```
 
@@ -291,7 +272,7 @@ public protocol Validator {
 
 ```swift
 public protocol RequestFilter {
-    func include(request request: NSURLRequest) -> Bool
+    func include(request request: Request) -> Bool
 }
 ```
 
@@ -301,13 +282,6 @@ public protocol RequestFilter {
 ### __Can validate the snapshots__
 #### It's a JSON file! :tada:
 ### :memo:
-
----
-
-## Live Demo
-### :grinning: 🌴
-
-![fill](images/Barcelona.jpeg)
 
 ---
 
