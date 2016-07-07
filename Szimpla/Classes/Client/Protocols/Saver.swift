@@ -1,18 +1,10 @@
 import Foundation
 
-/// Saves an input element.
-internal class Saver<I, E: ErrorType> {
+internal class Saver<I> {
     
-    /**
-     Saves an input element.
-     
-     - parameter input: Element to be saved.
-     
-     - returns: Saving result.
-     */
-    func save(input: I) -> Result<Void, E> {
+    func save(input: I) throws -> Void {
         assertionFailure("-save: must be overriden")
-        return Result.Success(())
+        return ()
     }
     
 }

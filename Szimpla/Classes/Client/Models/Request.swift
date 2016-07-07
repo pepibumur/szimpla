@@ -1,21 +1,39 @@
 import Foundation
 import SwiftyJSON
 
-/**
- *  Model that represents an HTTP Request
- */
 public struct Request {
     
     // MARK: - Attributes
     
-    /// Body dictionary
     public let body: JSON
-    
-    /// Base url
     public let url: String
-    
-    /// URL parameters
     public let parameters: [String: String]
+    
+    
+    // MARK: - Init
+    
+    internal init(body: JSON, url: String, parameters: [String: String]) {
+        self.body = body
+        self.url = url
+        self.parameters = parameters
+    }
+    
+    init(json: JSON) {
+        self.url = json["url"].stringValue
+        self.parameters = json["parameters"].dictionaryObject! as! [String: String]
+        self.body = json["body"]
+    }
+    
+    
+    // MARK: - Internal
+    
+    internal func toDict() -> [NSObject: AnyObject] {
+        var dict: [NSObject: AnyObject] = [:]
+        dict["url"] = self.url
+        dict["parameters"] = self.parameters
+        dict["body"] = self.body.dictionaryObject
+        return dict
+    }
     
 }
 

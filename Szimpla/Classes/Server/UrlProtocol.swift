@@ -2,21 +2,23 @@ import Foundation
 import SwiftyJSON
 import NSURL_QueryDictionary
 
-// MARK: - SzimplaURLProtocol
-
-internal class SzimplaURLProtocol: NSURLProtocol {
+@objc internal class UrlProtocol: NSURLProtocol {
     
     // MARK: - Static
     
-    private static  var requests: [[String: AnyObject]] = []
+    internal static  var requests: [[String: AnyObject]] = []
+    internal static var registered: Bool = false
     
-    internal class func start() {
+    internal class func start() throws {
+        if self.registered { throw UrlProtocolError.AlreadyRegistered }
         requests.removeAll()
+        self.registered = true
     }
     
     internal class func stop() -> [[String: AnyObject]] {
         let _requests = self.requests
         self.requests.removeAll()
+        self.registered = false
         return _requests
     }
     

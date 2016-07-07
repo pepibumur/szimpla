@@ -1,11 +1,7 @@
 import Foundation
 
-/**
- Error converting [NSURLRequest] into Snapshot
- 
- - EmptyURL: The URL is missing.
- */
 internal enum RequestsToSnapshotError: ErrorType, CustomStringConvertible {
+    
     case EmptyURL
     
     

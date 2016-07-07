@@ -16,12 +16,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 - Support for Acceptance Tests.
 - Support for custom validators.
 - Support for custom filters.
+- It doesn't support concurrency.
 
 ## :white_check_mark: TODO List
-- [ ] Test missing components:
-  - [ ] Szimpla Assertion.
-  - [ ] SnapshotFetcher
-- [ ] Add a example app
+- [ ] Add core with a logger
 
 ## Features backlog
 - Implement new filters for requests based on headers, parameters, ....

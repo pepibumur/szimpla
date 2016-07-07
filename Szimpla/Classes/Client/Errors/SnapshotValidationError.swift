@@ -1,18 +1,12 @@
 import Foundation
 
-/**
- Snapshot validation error
- 
- - InvalidCount: The number or recorded requests doesn't match the expected ones.
- - InvalidType: The expected type doesn't match the got one.
- - InvalidValue: The expected value doesn't match the got one.
- - NotFound: The value under the given key hasn't been found
- */
 public enum SnapshotValidationError: ErrorType, CustomStringConvertible {
+    
     case InvalidCount(expected: Int, got: Int)
     case InvalidType(key: String, expected: String, got: String)
     case InvalidValue(key: String, expected: String, got: String)
     case NotFound(key: String)
+    
     
     // MARK: - <CustomStringConvertible>
     

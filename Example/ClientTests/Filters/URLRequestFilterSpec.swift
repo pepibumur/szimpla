@@ -14,7 +14,7 @@ class URLRequestFilterSpec: QuickSpec {
         }
         
         it("should return false if the request doesn't match the filter url") {
-            let request = NSURLRequest(URL: NSURL(string: "http://google.com")!)
+            let request = Request(body: [:], url: "http://google.com", parameters: [:])
             expect(subject.include(request: request)).to(beFalse())
         }
         

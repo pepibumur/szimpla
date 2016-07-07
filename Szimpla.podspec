@@ -12,17 +12,23 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/pepibumur'
   s.ios.deployment_target = '8.0'
 
+  s.subspec 'Core' do |sp|
+    sp.source_files = 'Szimpla/Classes/Core/**/*'
+  end
+
   s.subspec 'Server' do |sp|
     sp.source_files = 'Szimpla/Classes/Server/**/*'
     sp.dependency 'NSURL+QueryDictionary'
     sp.dependency 'SwiftyJSON'
     sp.dependency 'Swifter'
+    sp.dependency 'Szimpla/Core'
   end
 
   s.subspec 'Client' do |sp|
     sp.source_files = 'Szimpla/Classes/Client/**/*'
     sp.framework = 'XCTest'
     sp.dependency 'SwiftyJSON'
+    sp.dependency 'Szimpla/Core'
   end
 
 end

@@ -1,14 +1,8 @@
 import Foundation
 
-/// Fetches and returns the element fetched.
-internal class Fetcher<O, E: ErrorType> {
+internal class Fetcher<O> {
     
-    /**
-     Fetches something from a source and returns it.
-     
-     - returns: Result with the fetched element or an error.
-     */
-    func fetch() -> Result<O, E>! {
+    func fetch() throws -> O! {
         assertionFailure("-fetch must be overriden")
         return nil
     }

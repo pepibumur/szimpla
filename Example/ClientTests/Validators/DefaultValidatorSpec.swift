@@ -19,10 +19,8 @@ class DefaultValidatorSpec: QuickSpec {
                 it("should throw an invalid count error") {
                     let request1 = generateRequest()
                     let request2 = generateRequest()
-                    let snapshotRecorded = Snapshot(requests: [request1])
-                    let snapshotLocal = Snapshot(requests: [request1, request2])
                     expect {
-                        try subject.validate(recordedSnapshot: snapshotRecorded, localSnapshot: snapshotLocal)
+                        try subject.validate(recordedRequests: [request1], localRequests: [request1, request2])
                     }.to(throwError(errorType: SnapshotValidationError.self))
                 }
             }
@@ -31,25 +29,21 @@ class DefaultValidatorSpec: QuickSpec {
                 it("shouldn't throw an error") {
                     let recorded = Request(body: ["test1": "value1", "test2": 2, "test3": ["test11": "value11"]], url: "test.com", parameters: ["test1": "value1", "test2": "value2"])
                     let local = Request(body: ["test2": 2, "test3": ["test11": "value11"]], url: "test.com", parameters: ["test1": "value1"])
-                    let snapshotRecorded = Snapshot(requests: [recorded])
-                    let snapshotLocal = Snapshot(requests: [local])
                     expect {
-                        try subject.validate(recordedSnapshot: snapshotRecorded, localSnapshot: snapshotLocal)
+                        try subject.validate(recordedRequests: [recorded], localRequests: [local])
                     }
                     .toNot(throwError())
                 }
             }
             
             context("when requests do not match") {
-                it("shouldn't throw an error") {
+                it("should throw an error") {
                     let recorded = Request(body: ["test1": "value1", "test2": 2, "test3": ["test11": "value11"]], url: "test.com", parameters: ["test1": "value1", "test2": "value2"])
                     let local = Request(body: ["test2": 5, "test3": ["test11": "value11"]], url: "test.com", parameters: ["test1": "value1"])
-                    let snapshotRecorded = Snapshot(requests: [recorded])
-                    let snapshotLocal = Snapshot(requests: [local])
                     expect {
-                        try subject.validate(recordedSnapshot: snapshotRecorded, localSnapshot: snapshotLocal)
+                        try subject.validate(recordedRequests: [recorded], localRequests: [local])
                         }
-                        .to(throwError())
+                    .to(throwError())
                 }
             }
         }

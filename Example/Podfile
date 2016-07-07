@@ -1,13 +1,13 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'SzimplaServer_Tests' do
+target 'ServerTests' do
   pod 'Szimpla/Server', :path => '../'
   pod 'Quick', '~> 0.8'
   pod 'Nimble', '~> 3.0'
 end
 
-target 'SzimplaClient_Tests' do
+target 'ClientTests' do
   pod 'Szimpla/Client', :path => '../'
   pod 'Quick', '~> 0.8'
   pod 'Nimble', '~> 3.0'

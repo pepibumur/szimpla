@@ -1,16 +1,11 @@
 import Foundation
 import XCTest
 
-/// Util for asserting test errors
 public class XCAsserter {
     
-    /**
-     Asserts using XCTest and passing the given message.
-     
-     - parameter message: Assertion message.
-     */
-    func assert(withMessage message: String) {
-        XCTAssert(false, message)
+    func assert(error: ErrorType) {
+        Logger.logError("Error validating")
+        XCTAssert(false, "Error validating, \(error)")
     }
     
 }

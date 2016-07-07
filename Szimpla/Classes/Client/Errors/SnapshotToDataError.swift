@@ -1,11 +1,7 @@
 import Foundation
 
-/**
- Error converting Snapshot into NSData.
- 
- - SerializationError: Error serializing the Snapshot.
- */
 internal enum SnapshotToDataError: ErrorType, CustomStringConvertible {
+    
     case SerializationError(ErrorType)
     
     

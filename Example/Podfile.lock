@@ -6,10 +6,13 @@ PODS:
   - SwiftyJSON (2.3.2)
   - Szimpla/Client (0.0.2):
     - SwiftyJSON
+    - Szimpla/Core
+  - Szimpla/Core (0.0.2)
   - Szimpla/Server (0.0.2):
     - NSURL+QueryDictionary
     - Swifter
     - SwiftyJSON
+    - Szimpla/Core
 
 DEPENDENCIES:
   - Nimble (~> 3.0)
@@ -27,8 +30,8 @@ SPEC CHECKSUMS:
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   Swifter: 20493bf45b97e3296f910665a1211129cf282db3
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  Szimpla: e007acd5d957e5f69eae0fb3b4d84784513c6576
+  Szimpla: 263252e118b1a835d9e47fdfb8d5a674d8eb04d4
 
-PODFILE CHECKSUM: 657225590f43038f2d4e3ff2304f49568c60299e
+PODFILE CHECKSUM: be9b1d2bc51f4d390a38883a7070a34c7f31d2a9
 
 COCOAPODS: 1.0.1

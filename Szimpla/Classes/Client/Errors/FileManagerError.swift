@@ -1,11 +1,7 @@
 import Foundation
 
-/**
- FileManager errors.
- 
- - UndefinedReferenceDir: SZ_REFERENCE_DIR is not defined.
- */
 internal enum FileManagerError: ErrorType, CustomStringConvertible{
+    
     case UndefinedReferenceDir
     
     
