@@ -46,6 +46,7 @@ class UrlProtocolSpec: QuickSpec {
             beforeEach {
                 let request = NSMutableURLRequest(URL: NSURL(string: "http://test.com")!.uq_URLByAppendingQueryDictionary(["param1": "value1"]))
                 request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(["body1": "value1"], options: NSJSONWritingOptions.PrettyPrinted)
+                UrlProtocol.registered = true
                 UrlProtocol.canInitWithRequest(request)
                 dictionary = UrlProtocol.requests.first!
             }
