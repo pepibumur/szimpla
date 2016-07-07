@@ -26,7 +26,9 @@ import NSURL_QueryDictionary
     // MARK: - NSURLProtocol
     
     override class func canInitWithRequest(request:NSURLRequest) -> Bool {
-        self.requests.append(self.dictionaryFromRequest(request))
+        if self.registered {
+            self.requests.append(self.dictionaryFromRequest(request))
+        }
         return false
     }
     

@@ -4,9 +4,9 @@ class SecondViewController: UIViewController {
     
     // MARK: - Lifecycle
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        request(url: NSURL(string: "http://analytics.com/")!, parameters: ["screen": "second"])
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        request(url: NSURL(string: "https://analytics.com/")!, parameters: ["screen": "second"])
     }
     
 }

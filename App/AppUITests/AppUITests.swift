@@ -20,7 +20,7 @@ class AppUITests: XCTestCase {
         app.buttons["Navigate"].tap()
         app.navigationBars["App.SecondView"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(0).tap()
         XCTAssert(app.buttons["Navigate"].exists, "It couldn't navigate")
-        Szimpla.Client.instance.validate(path: "CMDUConf.json")
+        try! Szimpla.Client.instance.validate(path: "CMDUConf.json")
     }
     
 }
