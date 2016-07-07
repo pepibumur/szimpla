@@ -43,6 +43,30 @@ Szimpla saves the snapshots in a folder that you specify using an environment va
 |:---|:----|
 |`SZ_REFERENCE_DIR`|`$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/Szimpla`|
 
+### Adding the server to the App
+In order to record the sent requests it's very important to start the server when your app is built for UI tests:
+
+Add the `tearUp()` method to the AppDelegate as shown below:
+
+```swift
+import Szimpla
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  if isUIBuild {
+    try! Szimpla.Server.instance.tearUp()
+  }    
+  return true
+}
+```
+
+And in your requests make sure you use the configuration provided by the Szimpla server:
+
+```swift
+var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+if isUIBuild {
+  configuration = Szimpla.Server.instance.sessionConfiguration(fromConfiguration: configuration)
+}
+```
+
 ### Recording requests
 The first step when testing Network requests is recording the requests in a `.json` file. This file will be used for validating future tests executions. Using Szimpla to get these requests saved is very simple:
 
@@ -50,11 +74,11 @@ The first step when testing Network requests is recording the requests in a `.js
 import Szimpla
 
 // Navigate to the point where you would like to start testing.
-Szimpla.instance.start() // Starts recording
+try! Szimpla.Client.instance.start() // Starts recording
 // Do all your UI tests steps
-Szimpla.instance.record(name: "user_share_tracking") // Saves the recorded requests
+try! Szimpla.Client.instance.record(path: "share/player.json") // Saves the recorded requests
 ```
-Requests will be saved under `${SZ_REFERENCE_DIR}/user_share_tracking.json`
+Requests will be saved under `${SZ_REFERENCE_DIR}/share/player.json`
 
 ### Adapting requests
 
@@ -75,9 +99,9 @@ The validation process is similar to the recording one. The only difference in t
 import Szimpla
 
 // Navigate to the point where you would like to start testing.
-Szimpla.instance.start() // Starts recording
+try! Szimpla.Client.instance.start() // Starts recording
 // Do all your UI tests steps
-Szimpla.instance.validate(name: "user_share_tracking") // Saves the recorded requests
+Szimpla.Client.instance.validate(path: "share/player.json") // Validates the recorded requests
 ```
 
 It the validation fails, it'll assert using `XCTAssert` printing the validation error. :tada:

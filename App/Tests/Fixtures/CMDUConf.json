@@ -1,18 +1,18 @@
 [
   {
+    "url" : "http:\/\/analytics.com\/?screen=second",
     "body" : {
 
     },
-    "url" : "http:\/\/analytics.com\/?screen=second",
     "parameters" : {
-      "screen" : "second"
+      "screen" : "second2"
     }
   },
   {
+    "url" : "http:\/\/analytics.com\/?screen=first",
     "body" : {
 
     },
-    "url" : "http:\/\/analytics.com\/?screen=first",
     "parameters" : {
       "screen" : "first"
     }
