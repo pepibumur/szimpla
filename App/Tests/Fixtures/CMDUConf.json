@@ -1,0 +1,20 @@
+[
+  {
+    "url" : "https:\/\/analytics.com\/?screen=first",
+    "body" : {
+
+    },
+    "parameters" : {
+      "screen" : "first"
+    }
+  },
+  {
+    "url" : "https:\/\/analytics.com\/?screen=second",
+    "body" : {
+
+    },
+    "parameters" : {
+      "screen" : "second"
+    }
+  }
+]

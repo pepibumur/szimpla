@@ -2,15 +2,23 @@ PODS:
   - Nimble (3.2.0)
   - NSURL+QueryDictionary (1.1.0)
   - Quick (0.9.2)
+  - Swifter (1.2.0)
   - SwiftyJSON (2.3.2)
-  - Szimpla (0.0.2):
-    - NSURL+QueryDictionary
+  - Szimpla/Client (0.0.2):
     - SwiftyJSON
+    - Szimpla/Core
+  - Szimpla/Core (0.0.2)
+  - Szimpla/Server (0.0.2):
+    - NSURL+QueryDictionary
+    - Swifter
+    - SwiftyJSON
+    - Szimpla/Core
 
 DEPENDENCIES:
   - Nimble (~> 3.0)
   - Quick (~> 0.8)
-  - Szimpla (from `../`)
+  - Szimpla/Client (from `../`)
+  - Szimpla/Server (from `../`)
 
 EXTERNAL SOURCES:
   Szimpla:
@@ -20,9 +28,10 @@ SPEC CHECKSUMS:
   Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
   NSURL+QueryDictionary: dd0a5fec689a9b4780b6fa0e0225c01ca3ea653e
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
+  Swifter: 20493bf45b97e3296f910665a1211129cf282db3
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  Szimpla: 1ac61a25621278481aa7fca45d09d77bfdd22290
+  Szimpla: 263252e118b1a835d9e47fdfb8d5a674d8eb04d4
 
-PODFILE CHECKSUM: 1d564c9190f35139034d0e54b65f93d673b4ea32
+PODFILE CHECKSUM: be9b1d2bc51f4d390a38883a7070a34c7f31d2a9
 
 COCOAPODS: 1.0.1

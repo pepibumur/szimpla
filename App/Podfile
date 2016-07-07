@@ -3,9 +3,9 @@ use_frameworks!
 
 target 'App' do
   pod 'NSURL+QueryDictionary'
-  pod 'Szimpla/App', :path => '../'
+  pod 'Szimpla/Server', :path => '../'
 end
 
 target "AppUITests" do
-  pod 'Szimpla/Tests', :path => '../'
+  pod 'Szimpla/Client', :path => '../'
 end
